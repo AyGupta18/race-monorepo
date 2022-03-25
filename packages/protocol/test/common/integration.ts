@@ -22,7 +22,7 @@ import {
   ExchangeInstance,
   FeeCurrencyWhitelistInstance,
   FreezerInstance,
-  GoldTokenInstance,
+  RaceTokenInstance,
   GovernanceApproverMultiSigInstance,
   GovernanceInstance,
   GovernanceSlasherInstance,
@@ -401,7 +401,7 @@ Array.from([
     let exchange: ExchangeInstance
     let multiSig: ReserveSpenderMultiSigInstance
     let reserve: ReserveInstance
-    let goldToken: GoldTokenInstance
+    let goldToken: RaceTokenInstance
     let stableToken: StableTokenInstance
     let originalStable
     let originalGold
@@ -417,7 +417,7 @@ Array.from([
       stableToken = await getDeployedProxiedContract(stableTokenId, artifacts)
       multiSig = await getDeployedProxiedContract('ReserveSpenderMultiSig', artifacts)
       reserve = await getDeployedProxiedContract('Reserve', artifacts)
-      goldToken = await getDeployedProxiedContract('GoldToken', artifacts)
+      goldToken = await getDeployedProxiedContract('RaceToken', artifacts)
     })
 
     describe('Selling', () => {
@@ -580,7 +580,7 @@ contract('Integration: Adding StableToken', (accounts: string[]) => {
   const StableToken: StableTokenContract = artifacts.require('StableToken')
   let exchangeAbc: ExchangeInstance
   let freezer: FreezerInstance
-  let goldToken: GoldTokenInstance
+  let goldToken: RaceTokenInstance
   let stableTokenAbc: StableTokenInstance
   const sellAmount = web3.utils.toWei('0.1', 'ether')
   const minBuyAmount = 1
@@ -588,7 +588,7 @@ contract('Integration: Adding StableToken', (accounts: string[]) => {
   // 0. Make ourselves the owner of the various contracts we will need to interact with, as
   // passing a governance proposal for each one will be a pain in the butt.
   before(async () => {
-    goldToken = await getDeployedProxiedContract('GoldToken', artifacts)
+    goldToken = await getDeployedProxiedContract('RaceToken', artifacts)
     freezer = await getDeployedProxiedContract('Freezer', artifacts)
     const contractsToOwn = [
       'Freezer',

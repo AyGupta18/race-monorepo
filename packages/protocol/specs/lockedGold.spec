@@ -18,7 +18,7 @@ methods {
 	decrementNonvotingAccountBalance(address, uint256) 
 	unlock(uint256) 
 	pendingWithdrawalsNotFull(address) returns bool envfree
-	getGoldTokenExt() returns address envfree
+	getRaceTokenExt() returns address envfree
 }
 
 /**
@@ -82,7 +82,7 @@ rule noChangeByOther(address a, address b, method f) {
 	// We assume the sender is not the currentContract
 	require(
     a != currentContract &&
-    (a == sinvoke getGoldTokenExt() => f.selector != withdraw(uint256).selector));
+    (a == sinvoke getRaceTokenExt() => f.selector != withdraw(uint256).selector));
 	uint256 _ercBalance = sinvoke ercBalanceOf(a);
 	uint256 _accountNonVoting = sinvoke getAccountNonvotingLockedGold(a);
 	uint256 _accountTotalPendingWithdrawals =  sinvoke getTotalPendingWithdrawals(a);
@@ -107,7 +107,7 @@ rule noChangeByOther(address a, address b, method f) {
 }
 
 /**
- * This rule verifies the Certora Prover is correctly modeling the behavior of GoldToken._transfer.
+ * This rule verifies the Certora Prover is correctly modeling the behavior of RaceToken._transfer.
  */
 rule withdraw(uint256 index) {
 	env e;

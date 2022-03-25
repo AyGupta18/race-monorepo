@@ -15,7 +15,7 @@ import { EscrowWrapper } from './wrappers/Escrow'
 import { ExchangeWrapper } from './wrappers/Exchange'
 import { FreezerWrapper } from './wrappers/Freezer'
 import { GasPriceMinimumWrapper } from './wrappers/GasPriceMinimum'
-import { GoldTokenWrapper } from './wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from './wrappers/RaceTokenWrapper'
 import { GovernanceWrapper } from './wrappers/Governance'
 import { GrandaMentoWrapper } from './wrappers/GrandaMento'
 import { LockedGoldWrapper } from './wrappers/LockedGold'
@@ -43,7 +43,7 @@ const WrapperFactories = {
   // [CeloContract.FeeCurrencyWhitelist]: FeeCurrencyWhitelistWrapper,
   [CeloContract.Freezer]: FreezerWrapper,
   [CeloContract.GasPriceMinimum]: GasPriceMinimumWrapper,
-  [CeloContract.GoldToken]: GoldTokenWrapper,
+  [CeloContract.RaceToken]: RaceTokenWrapper,
   [CeloContract.Governance]: GovernanceWrapper,
   [CeloContract.GrandaMento]: GrandaMentoWrapper,
   [CeloContract.LockedGold]: LockedGoldWrapper,
@@ -79,7 +79,7 @@ interface WrapperCacheMap {
   // [CeloContract.FeeCurrencyWhitelist]?: FeeCurrencyWhitelistWrapper,
   [CeloContract.Freezer]?: FreezerWrapper
   [CeloContract.GasPriceMinimum]?: GasPriceMinimumWrapper
-  [CeloContract.GoldToken]?: GoldTokenWrapper
+  [CeloContract.RaceToken]?: RaceTokenWrapper
   [CeloContract.Governance]?: GovernanceWrapper
   [CeloContract.GrandaMento]?: GrandaMentoWrapper
   [CeloContract.LockedGold]?: LockedGoldWrapper
@@ -145,8 +145,8 @@ export class WrapperCache {
   getGasPriceMinimum() {
     return this.getContract(CeloContract.GasPriceMinimum)
   }
-  getGoldToken() {
-    return this.getContract(CeloContract.GoldToken)
+  getRaceToken() {
+    return this.getContract(CeloContract.RaceToken)
   }
   getGovernance() {
     return this.getContract(CeloContract.Governance)

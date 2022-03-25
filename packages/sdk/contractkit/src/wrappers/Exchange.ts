@@ -24,7 +24,7 @@ export interface ExchangeConfig {
 }
 
 /**
- * Contract that allows to exchange StableToken for GoldToken and vice versa
+ * Contract that allows to exchange StableToken for RaceToken and vice versa
  * using a Constant Product Market Maker Model
  */
 export class ExchangeWrapper extends BaseWrapper<Exchange> {

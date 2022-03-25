@@ -35,7 +35,7 @@ export default class MultiSigTransfer extends BaseCommand {
       flags: { to, sender, from, amount, transferFrom },
     } = this.parse(MultiSigTransfer)
     const amountBN = new BigNumber(amount)
-    const celoToken = await this.kit.contracts.getGoldToken()
+    const celoToken = await this.kit.contracts.getRaceToken()
     const multisig = await this.kit.contracts.getMultiSig(args.address)
 
     let transferTx

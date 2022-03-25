@@ -3,7 +3,7 @@ import {
   getDeployedProxiedContract,
 } from '@celo/protocol/lib/web3-utils'
 import { BigNumber } from 'bignumber.js'
-import { GoldTokenInstance, StableTokenInstance } from 'types'
+import { RaceTokenInstance, StableTokenInstance } from 'types'
 
 /*
  * A simple script to transfer token balances on a testnet.
@@ -26,7 +26,7 @@ module.exports = async (callback: (error?: any) => number) => {
     })
 
     BigNumber.config({ EXPONENTIAL_AT: 500 })
-    const goldToken = await getDeployedProxiedContract<GoldTokenInstance>('GoldToken', artifacts)
+    const goldToken = await getDeployedProxiedContract<RaceTokenInstance>('RaceToken', artifacts)
     const stableToken = await getDeployedProxiedContract<StableTokenInstance>(
       'StableToken',
       artifacts

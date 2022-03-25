@@ -86,7 +86,7 @@ module.exports = deploymentForCoreContract<GovernanceInstance>(
       'FeeCurrencyWhitelist',
       'Freezer',
       'GasPriceMinimum',
-      'GoldToken',
+      'RaceToken',
       'Governance',
       'GovernanceSlasher',
       'GrandaMento',

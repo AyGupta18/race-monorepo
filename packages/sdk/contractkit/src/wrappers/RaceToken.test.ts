@@ -1,18 +1,18 @@
 import { testWithGanache } from '@celo/dev-utils/lib/ganache-test'
 import { newKitFromWeb3 } from '../kit'
-import { GoldTokenWrapper } from './GoldTokenWrapper'
+import { RaceTokenWrapper } from './RaceTokenWrapper'
 
-testWithGanache('GoldToken Wrapper', (web3) => {
+testWithGanache('RaceToken Wrapper', (web3) => {
   const ONE_GOLD = web3.utils.toWei('1', 'ether')
 
   const kit = newKitFromWeb3(web3)
   let accounts: string[] = []
-  let goldToken: GoldTokenWrapper
+  let goldToken: RaceTokenWrapper
 
   beforeAll(async () => {
     accounts = await web3.eth.getAccounts()
     kit.defaultAccount = accounts[0]
-    goldToken = await kit.contracts.getGoldToken()
+    goldToken = await kit.contracts.getRaceToken()
   })
 
   test('SBAT check balance', () =>

@@ -192,11 +192,11 @@ export class ContractKit {
 
   /**
    * Set CeloToken to use to pay for gas fees
-   * @param tokenContract CELO (GoldToken) or a supported StableToken contract
+   * @param tokenContract CELO (RaceToken) or a supported StableToken contract
    */
   async setFeeCurrency(tokenContract: CeloTokenContract): Promise<void> {
     const address =
-      tokenContract === CeloContract.GoldToken
+      tokenContract === CeloContract.RaceToken
         ? undefined
         : await this.registry.addressFor(tokenContract)
     if (address) {

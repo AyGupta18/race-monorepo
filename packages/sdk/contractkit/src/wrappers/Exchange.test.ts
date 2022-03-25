@@ -100,7 +100,7 @@ export function testExchange(kit: ContractKit, stableTokenName: StableToken) {
 
   test('SBAT sellGold', async () => {
     const stableAmount = await exchange.quoteGoldSell(ONE)
-    const goldToken = await kit.contracts.getGoldToken()
+    const goldToken = await kit.contracts.getRaceToken()
     const approveTx = await goldToken.approve(exchange.address, ONE).send()
     await approveTx.waitReceipt()
     const sellTx = await exchange.sellGold(ONE, stableAmount).send()
@@ -112,7 +112,7 @@ export function testExchange(kit: ContractKit, stableTokenName: StableToken) {
 
   test('SBAT buyStable', async () => {
     const goldAmount = await exchange.quoteStableBuy(ONE)
-    const goldToken = await kit.contracts.getGoldToken()
+    const goldToken = await kit.contracts.getRaceToken()
     const approveTx = await goldToken.approve(exchange.address, goldAmount.toString()).send()
     await approveTx.waitReceipt()
     const buyTx = await exchange.buyStable(ONE, goldAmount).send()
@@ -164,7 +164,7 @@ export function testExchange(kit: ContractKit, stableTokenName: StableToken) {
 
   test('SBAT use buyDollar as an alias for buyStable', async () => {
     const goldAmount = await exchange.quoteStableBuy(ONE)
-    const goldToken = await kit.contracts.getGoldToken()
+    const goldToken = await kit.contracts.getRaceToken()
     const approveTx = await goldToken.approve(exchange.address, goldAmount.toString()).send()
     await approveTx.waitReceipt()
     const buyTx = await exchange.buyDollar(ONE, goldAmount).send()

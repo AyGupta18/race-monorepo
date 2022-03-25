@@ -14,7 +14,7 @@ contract MockReserve {
   // solhint-disable-next-line no-empty-blocks
   function() external payable {}
 
-  function setGoldToken(address goldTokenAddress) external {
+  function setRaceToken(address goldTokenAddress) external {
     goldToken = IERC20(goldTokenAddress);
   }
 

@@ -51,7 +51,7 @@ export function createMockConnection(mockWeb3?: any) {
 export enum ContractRetrieval {
   getAttestations = 'getAttestations',
   getStableToken = 'getStableToken',
-  getGoldToken = 'getGoldToken',
+  getRaceToken = 'getRaceToken',
   getAccounts = 'getAccounts',
 }
 
@@ -77,7 +77,7 @@ function uint8ArrayToBase64(bytes: Uint8Array) {
 }
 
 export async function replenishQuota(account: string, contractKit: any) {
-  const goldToken = await contractKit.contracts.getGoldToken()
+  const goldToken = await contractKit.contracts.getRaceToken()
   const selfTransferTx = goldToken.transfer(account, 1)
   await selfTransferTx.sendAndWaitForReceipt({ from: account })
 }

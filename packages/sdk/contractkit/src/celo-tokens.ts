@@ -1,7 +1,7 @@
 import { BigNumber } from 'bignumber.js'
 import { CeloContract, CeloTokenContract, ExchangeContract, StableTokenContract } from './base'
 import { ContractKit } from './kit'
-import { GoldTokenWrapper } from './wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from './wrappers/RaceTokenWrapper'
 import { StableTokenWrapper } from './wrappers/StableTokenWrapper'
 
 export enum StableToken {
@@ -16,7 +16,7 @@ export enum Token {
 
 export type CeloTokenType = StableToken | Token
 
-type CeloTokenWrapper = GoldTokenWrapper | StableTokenWrapper
+type CeloTokenWrapper = RaceTokenWrapper | StableTokenWrapper
 
 export type EachCeloToken<T> = {
   [key in CeloTokenType]?: T
@@ -58,7 +58,7 @@ export const celoTokenInfos: {
   [key in CeloTokenType]: CeloTokenInfo
 } = {
   [Token.CELO]: {
-    contract: CeloContract.GoldToken,
+    contract: CeloContract.RaceToken,
     symbol: Token.CELO,
   },
   ...stableTokenInfos,
@@ -227,7 +227,7 @@ export class CeloTokens {
    * @return an promise resolving to the wrapper for the token
    */
   getWrapper(token: StableToken): Promise<StableTokenWrapper>
-  getWrapper(token: Token): Promise<GoldTokenWrapper>
+  getWrapper(token: Token): Promise<RaceTokenWrapper>
   getWrapper(token: CeloTokenType): Promise<CeloTokenWrapper>
   getWrapper(token: CeloTokenType): Promise<CeloTokenWrapper> {
     return this.kit.contracts.getContract(celoTokenInfos[token].contract)

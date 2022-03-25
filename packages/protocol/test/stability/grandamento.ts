@@ -11,12 +11,12 @@ import BigNumber from 'bignumber.js'
 import {
   FreezerContract,
   FreezerInstance,
-  GoldTokenContract,
-  GoldTokenInstance,
+  RaceTokenContract,
+  RaceTokenInstance,
   GrandaMentoContract,
   GrandaMentoInstance,
-  MockGoldTokenContract,
-  MockGoldTokenInstance,
+  MockRaceTokenContract,
+  MockRaceTokenInstance,
   MockReserveContract,
   MockReserveInstance,
   MockSortedOraclesContract,
@@ -31,9 +31,9 @@ import {
 import { SECONDS_IN_A_WEEK } from '../constants'
 
 const Freezer: FreezerContract = artifacts.require('Freezer')
-const GoldToken: GoldTokenContract = artifacts.require('GoldToken')
+const RaceToken: RaceTokenContract = artifacts.require('RaceToken')
 const GrandaMento: GrandaMentoContract = artifacts.require('GrandaMento')
-const MockGoldToken: MockGoldTokenContract = artifacts.require('MockGoldToken')
+const MockRaceToken: MockRaceTokenContract = artifacts.require('MockRaceToken')
 const MockSortedOracles: MockSortedOraclesContract = artifacts.require('MockSortedOracles')
 const MockStableToken: MockStableTokenContract = artifacts.require('MockStableToken')
 const Registry: RegistryContract = artifacts.require('Registry')
@@ -41,11 +41,11 @@ const MockReserve: MockReserveContract = artifacts.require('MockReserve')
 const StableToken: StableTokenContract = artifacts.require('StableToken')
 
 // @ts-ignore
-GoldToken.numberFormat = 'BigNumber'
+RaceToken.numberFormat = 'BigNumber'
 // @ts-ignore
 GrandaMento.numberFormat = 'BigNumber'
 // @ts-ignore
-MockGoldToken.numberFormat = 'BigNumber'
+MockRaceToken.numberFormat = 'BigNumber'
 // @ts-ignore
 MockReserve.numberFormat = 'BigNumber'
 // @ts-ignore
@@ -97,7 +97,7 @@ function parseExchangeLimits(exchangeLimitsRaw: [BigNumber, BigNumber]) {
 }
 
 contract('GrandaMento', (accounts: string[]) => {
-  let goldToken: GoldTokenInstance
+  let goldToken: RaceTokenInstance
   let grandaMento: GrandaMentoInstance
   let sortedOracles: MockSortedOraclesInstance
   let stableToken: MockStableTokenInstance
@@ -158,8 +158,8 @@ contract('GrandaMento', (accounts: string[]) => {
   beforeEach(async () => {
     registry = await Registry.new(true)
 
-    goldToken = await GoldToken.new(true)
-    await registry.setAddressFor(CeloContractName.GoldToken, goldToken.address)
+    goldToken = await RaceToken.new(true)
+    await registry.setAddressFor(CeloContractName.RaceToken, goldToken.address)
 
     stableToken = await MockStableToken.new()
     const balance = unit.times(2000)
@@ -175,7 +175,7 @@ contract('GrandaMento', (accounts: string[]) => {
     await sortedOracles.setNumRates(stableToken.address, 2)
 
     reserve = await MockReserve.new()
-    await reserve.setGoldToken(goldToken.address)
+    await reserve.setRaceToken(goldToken.address)
     await registry.setAddressFor(CeloContractName.Reserve, reserve.address)
     // Give the reserve some CELO
     await goldToken.transfer(reserve.address, unit.times(50000), { from: owner })
@@ -321,7 +321,7 @@ contract('GrandaMento', (accounts: string[]) => {
       let sellTokenString: string
       let sellAmount: BigNumber
       let oracleRate: BigNumber
-      let sellToken: GoldTokenInstance | MockStableTokenInstance
+      let sellToken: RaceTokenInstance | MockStableTokenInstance
 
       if (sellCelo) {
         sellTokenString = 'CELO'
@@ -603,7 +603,7 @@ contract('GrandaMento', (accounts: string[]) => {
       for (const sellCelo of [true, false]) {
         let sellTokenString: string
         let sellAmount: BigNumber
-        let sellToken: GoldTokenInstance | MockGoldTokenInstance | MockStableTokenInstance
+        let sellToken: RaceTokenInstance | MockRaceTokenInstance | MockStableTokenInstance
 
         if (sellCelo) {
           sellTokenString = 'CELO'
@@ -645,15 +645,15 @@ contract('GrandaMento', (accounts: string[]) => {
             // Granda Mento's balance.
             if (sellCelo) {
               newGrandaMentoBalance = unit.times(40)
-              const mockGoldToken = await MockGoldToken.new()
-              sellToken = mockGoldToken
-              await registry.setAddressFor(CeloContractName.GoldToken, mockGoldToken.address)
-              await mockGoldToken.setBalanceOf(alice, celoSellAmount)
+              const mockRaceToken = await MockRaceToken.new()
+              sellToken = mockRaceToken
+              await registry.setAddressFor(CeloContractName.RaceToken, mockRaceToken.address)
+              await mockRaceToken.setBalanceOf(alice, celoSellAmount)
 
               await createExchangeProposal(sellCelo, alice)
 
               // Just directly set the balance of Granda Mento.
-              await mockGoldToken.setBalanceOf(grandaMento.address, newGrandaMentoBalance)
+              await mockRaceToken.setBalanceOf(grandaMento.address, newGrandaMentoBalance)
             } else {
               newGrandaMentoBalance = unit.times(400)
               await createExchangeProposal(sellCelo, alice)
@@ -803,18 +803,18 @@ contract('GrandaMento', (accounts: string[]) => {
 
           it('transfers the entire CELO balance to the Reserve if the sell amount is higher than the balance', async () => {
             const newCeloSellAmount = unit.times(40)
-            const mockGoldToken = await MockGoldToken.new()
-            await registry.setAddressFor(CeloContractName.GoldToken, mockGoldToken.address)
+            const mockRaceToken = await MockRaceToken.new()
+            await registry.setAddressFor(CeloContractName.RaceToken, mockRaceToken.address)
             // Set the CELO balance to lower value
-            await mockGoldToken.setBalanceOf(grandaMento.address, newCeloSellAmount)
+            await mockRaceToken.setBalanceOf(grandaMento.address, newCeloSellAmount)
             // Give the reserve a bunch of CELO
-            await mockGoldToken.setBalanceOf(reserve.address, unit.times(50000))
+            await mockRaceToken.setBalanceOf(reserve.address, unit.times(50000))
 
-            const reserveBalanceBefore = await mockGoldToken.balanceOf(reserve.address)
+            const reserveBalanceBefore = await mockRaceToken.balanceOf(reserve.address)
             await grandaMento.executeExchangeProposal(1)
-            const reserveBalanceAfter = await mockGoldToken.balanceOf(reserve.address)
+            const reserveBalanceAfter = await mockRaceToken.balanceOf(reserve.address)
 
-            assertEqualBN(await mockGoldToken.balanceOf(grandaMento.address), 0)
+            assertEqualBN(await mockRaceToken.balanceOf(grandaMento.address), 0)
             assertEqualBN(reserveBalanceAfter.minus(reserveBalanceBefore), newCeloSellAmount)
           })
 

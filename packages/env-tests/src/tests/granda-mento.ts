@@ -1,6 +1,6 @@
 import { sleep } from '@celo/base'
 import { StableToken } from '@celo/contractkit'
-import { GoldTokenWrapper } from '@celo/contractkit/lib/wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from '@celo/contractkit/lib/wrappers/RaceTokenWrapper'
 import { StableTokenWrapper } from '@celo/contractkit/lib/wrappers/StableTokenWrapper'
 import { describe, test } from '@jest/globals'
 import BigNumber from 'bignumber.js'
@@ -45,13 +45,13 @@ export function runGrandaMentoTest(context: EnvTestContext, stableTokensToTest: 
             }
           })
 
-          let buyToken: GoldTokenWrapper | StableTokenWrapper
-          let sellToken: GoldTokenWrapper | StableTokenWrapper
+          let buyToken: RaceTokenWrapper | StableTokenWrapper
+          let sellToken: RaceTokenWrapper | StableTokenWrapper
           let stableTokenAddress: string
           let sellAmount: BigNumber
 
           beforeEach(async () => {
-            const goldTokenWrapper = await context.kit.contracts.getGoldToken()
+            const goldTokenWrapper = await context.kit.contracts.getRaceToken()
             const stableTokenWrapper = await context.kit.celoTokens.getWrapper(
               stableToken as StableToken
             )

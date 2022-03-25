@@ -6,23 +6,23 @@ import _ from 'lodash'
 import {
   FreezerContract,
   FreezerInstance,
-  GoldTokenContract,
-  GoldTokenInstance,
+  RaceTokenContract,
+  RaceTokenInstance,
   RegistryContract,
   RegistryInstance,
 } from 'types'
 
 const Freezer: FreezerContract = artifacts.require('Freezer')
-const GoldToken: GoldTokenContract = artifacts.require('GoldToken')
+const RaceToken: RaceTokenContract = artifacts.require('RaceToken')
 const Registry: RegistryContract = artifacts.require('Registry')
 
 // @ts-ignore
 // TODO(mcortesi): Use BN
-GoldToken.numberFormat = 'BigNumber'
+RaceToken.numberFormat = 'BigNumber'
 
-contract('GoldToken', (accounts: string[]) => {
+contract('RaceToken', (accounts: string[]) => {
   let freezer: FreezerInstance
-  let goldToken: GoldTokenInstance
+  let goldToken: RaceTokenInstance
   let registry: RegistryInstance
   const ONE_GOLDTOKEN = new BigNumber('1000000000000000000')
   const TWO_GOLDTOKEN = new BigNumber('2000000000000000000')
@@ -31,7 +31,7 @@ contract('GoldToken', (accounts: string[]) => {
 
   beforeEach(async () => {
     freezer = await Freezer.new(true)
-    goldToken = await GoldToken.new(true)
+    goldToken = await RaceToken.new(true)
     registry = await Registry.new(true)
     await registry.setAddressFor(CeloContractName.Freezer, freezer.address)
     await goldToken.initialize(registry.address)

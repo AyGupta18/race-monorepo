@@ -1,6 +1,6 @@
 import { Address } from '@celo/connect'
 import { newKitFromWeb3 } from '@celo/contractkit'
-import { GoldTokenWrapper } from '@celo/contractkit/lib/wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from '@celo/contractkit/lib/wrappers/RaceTokenWrapper'
 import { testWithGanache } from '@celo/dev-utils/lib/ganache-test'
 import BigNumber from 'bignumber.js'
 import Web3 from 'web3'
@@ -13,11 +13,11 @@ testWithGanache('reserve:transfergold cmd', (web3: Web3) => {
   const kit = newKitFromWeb3(web3)
 
   let accounts: Address[] = []
-  let goldToken: GoldTokenWrapper
+  let goldToken: RaceTokenWrapper
 
   beforeEach(async () => {
     accounts = await web3.eth.getAccounts()
-    goldToken = await kit.contracts.getGoldToken()
+    goldToken = await kit.contracts.getRaceToken()
   })
   test('transferGold fails if spender not passed in', async () => {
     await expect(

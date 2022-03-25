@@ -24,7 +24,7 @@ export function runExchangeTest(context: EnvTestContext, stableTokensToTest: Sta
         context.kit.connection.addAccount(from.privateKey)
         context.kit.defaultAccount = from.address
         context.kit.connection.defaultFeeCurrency = stableTokenInstance.address
-        const goldToken = await context.kit.contracts.getGoldToken()
+        const goldToken = await context.kit.contracts.getRaceToken()
 
         const exchange = await context.kit.contracts.getExchange(stableToken)
         const previousGoldBalance = await goldToken.balanceOf(from.address)

@@ -3,7 +3,7 @@ import { newKitFromWeb3 } from '@celo/contractkit'
 import { StableToken } from '@celo/contractkit/lib/celo-tokens'
 import { setGrandaMentoLimits } from '@celo/contractkit/lib/test-utils/grandaMento'
 import { assumeOwnership } from '@celo/contractkit/lib/test-utils/transferownership'
-import { GoldTokenWrapper } from '@celo/contractkit/lib/wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from '@celo/contractkit/lib/wrappers/RaceTokenWrapper'
 import { GrandaMentoWrapper } from '@celo/contractkit/lib/wrappers/GrandaMento'
 import { testWithGanache } from '@celo/dev-utils/lib/ganache-test'
 import BigNumber from 'bignumber.js'
@@ -14,14 +14,14 @@ testWithGanache('grandamento:list cmd', (web3: Web3) => {
   const kit = newKitFromWeb3(web3)
   let grandaMento: GrandaMentoWrapper
   let accounts: Address[] = []
-  let celoToken: GoldTokenWrapper
+  let celoToken: RaceTokenWrapper
 
   beforeAll(async () => {
     accounts = await web3.eth.getAccounts()
     kit.defaultAccount = accounts[0]
     grandaMento = await kit.contracts.getGrandaMento()
 
-    celoToken = await kit.contracts.getGoldToken()
+    celoToken = await kit.contracts.getRaceToken()
   })
 
   beforeEach(async () => {

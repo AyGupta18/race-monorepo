@@ -5,7 +5,7 @@ import MTWContract from '@celo/protocol/build/contracts/MetaTransactionWallet.js
 import { generateTypedDataHash } from '@celo/utils/lib/sign-typed-data-utils'
 import BigNumber from 'bignumber.js'
 import { newKitFromWeb3 } from '../kit'
-import { GoldTokenWrapper } from './GoldTokenWrapper'
+import { RaceTokenWrapper } from './RaceTokenWrapper'
 import {
   buildMetaTxTypedData,
   MetaTransactionWalletWrapper,
@@ -32,7 +32,7 @@ testWithGanache('MetaTransactionWallet Wrapper', (web3) => {
   let walletDeployer: Address
   let walletSigner: Address
   let wallet: MetaTransactionWalletWrapper
-  let gold: GoldTokenWrapper
+  let gold: RaceTokenWrapper
   let emptyAccounts: Address[]
   let rando: Address
 
@@ -42,7 +42,7 @@ testWithGanache('MetaTransactionWallet Wrapper', (web3) => {
     walletSigner = accounts[1]
     kit.defaultAccount = walletSigner
     rando = accounts[2]
-    gold = await kit.contracts.getGoldToken()
+    gold = await kit.contracts.getRaceToken()
   })
 
   beforeEach(async () => {

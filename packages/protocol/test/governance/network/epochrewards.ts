@@ -17,8 +17,8 @@ import {
   FreezerInstance,
   MockElectionContract,
   MockElectionInstance,
-  MockGoldTokenContract,
-  MockGoldTokenInstance,
+  MockRaceTokenContract,
+  MockRaceTokenInstance,
   MockSortedOraclesContract,
   MockSortedOraclesInstance,
   MockStableTokenContract,
@@ -32,7 +32,7 @@ import {
 const EpochRewards: EpochRewardsTestContract = artifacts.require('EpochRewardsTest')
 const Freezer: FreezerContract = artifacts.require('Freezer')
 const MockElection: MockElectionContract = artifacts.require('MockElection')
-const MockGoldToken: MockGoldTokenContract = artifacts.require('MockGoldToken')
+const MockRaceToken: MockRaceTokenContract = artifacts.require('MockRaceToken')
 const MockStableToken: MockStableTokenContract = artifacts.require('MockStableToken')
 const MockSortedOracles: MockSortedOraclesContract = artifacts.require('MockSortedOracles')
 const Registry: RegistryContract = artifacts.require('Registry')
@@ -57,7 +57,7 @@ contract('EpochRewards', (accounts: string[]) => {
   let epochRewards: EpochRewardsTestInstance
   let freezer: FreezerInstance
   let mockElection: MockElectionInstance
-  let mockGoldToken: MockGoldTokenInstance
+  let mockRaceToken: MockRaceTokenInstance
   let mockStableToken: MockStableTokenInstance
   let mockSortedOracles: MockSortedOraclesInstance
   let registry: RegistryInstance
@@ -97,14 +97,14 @@ contract('EpochRewards', (accounts: string[]) => {
   beforeEach(async () => {
     epochRewards = await EpochRewards.new()
     mockElection = await MockElection.new()
-    mockGoldToken = await MockGoldToken.new()
+    mockRaceToken = await MockRaceToken.new()
     mockStableToken = await MockStableToken.new()
     mockSortedOracles = await MockSortedOracles.new()
     freezer = await Freezer.new(true)
     registry = await Registry.new(true)
     await registry.setAddressFor(CeloContractName.Election, mockElection.address)
     await registry.setAddressFor(CeloContractName.Freezer, freezer.address)
-    await registry.setAddressFor(CeloContractName.GoldToken, mockGoldToken.address)
+    await registry.setAddressFor(CeloContractName.RaceToken, mockRaceToken.address)
     await registry.setAddressFor(CeloContractName.SortedOracles, mockSortedOracles.address)
     await registry.setAddressFor(CeloContractName.StableToken, mockStableToken.address)
     await mockSortedOracles.setMedianRate(
@@ -520,7 +520,7 @@ contract('EpochRewards', (accounts: string[]) => {
 
     describe('when the target supply is equal to the actual supply after rewards', () => {
       beforeEach(async () => {
-        await mockGoldToken.setTotalSupply(expectedTargetTotalSupply.minus(targetEpochReward))
+        await mockRaceToken.setTotalSupply(expectedTargetTotalSupply.minus(targetEpochReward))
         await timeTravelToDelta(timeDelta)
       })
 
@@ -539,7 +539,7 @@ contract('EpochRewards', (accounts: string[]) => {
         const totalSupply = SUPPLY_CAP.minus(actualRemainingSupply)
           .minus(targetEpochReward)
           .integerValue(BigNumber.ROUND_FLOOR)
-        await mockGoldToken.setTotalSupply(totalSupply)
+        await mockRaceToken.setTotalSupply(totalSupply)
         await timeTravelToDelta(timeDelta)
       })
 
@@ -559,7 +559,7 @@ contract('EpochRewards', (accounts: string[]) => {
         const totalSupply = SUPPLY_CAP.minus(actualRemainingSupply)
           .minus(targetEpochReward)
           .integerValue(BigNumber.ROUND_FLOOR)
-        await mockGoldToken.setTotalSupply(totalSupply)
+        await mockRaceToken.setTotalSupply(totalSupply)
         await timeTravelToDelta(timeDelta)
       })
 
@@ -595,7 +595,7 @@ contract('EpochRewards', (accounts: string[]) => {
         toFixed(0.005),
         toFixed(2)
       )
-      await mockGoldToken.setTotalSupply(totalSupply)
+      await mockRaceToken.setTotalSupply(totalSupply)
       await web3.eth.sendTransaction({
         from: accounts[9],
         to: reserve.address,
@@ -952,7 +952,7 @@ contract('EpochRewards', (accounts: string[]) => {
         const totalSupply = SUPPLY_CAP.minus(actualRemainingSupply)
           .minus(expectedTargetGoldSupplyIncrease)
           .integerValue(BigNumber.ROUND_FLOOR)
-        await mockGoldToken.setTotalSupply(totalSupply)
+        await mockRaceToken.setTotalSupply(totalSupply)
         expectedMultiplier = new BigNumber(1).plus(
           fromFixed(rewardsMultiplier.adjustments.underspend).times(0.1)
         )
@@ -1036,7 +1036,7 @@ contract('EpochRewards', (accounts: string[]) => {
         toFixed(2)
       )
       await reserve.addToken(mockStableToken.address)
-      await mockGoldToken.setTotalSupply(totalSupply)
+      await mockRaceToken.setTotalSupply(totalSupply)
       const assetAllocationSymbols = [
         web3.utils.padRight(web3.utils.utf8ToHex('cGLD'), 64),
         web3.utils.padRight(web3.utils.utf8ToHex('empty'), 64),

@@ -8,7 +8,7 @@ export const CONTRACTS_TO_COPY = [
   'Attestations',
   'Escrow',
   'Exchange',
-  'GoldToken',
+  'RaceToken',
   'Registry',
   'Reserve',
   'StableToken',

@@ -7,7 +7,7 @@ import { StableToken } from '../celo-tokens'
 import { newKitFromWeb3 } from '../kit'
 import { setGrandaMentoLimits } from '../test-utils/grandaMento'
 import { assumeOwnership } from '../test-utils/transferownership'
-import { GoldTokenWrapper } from './GoldTokenWrapper'
+import { RaceTokenWrapper } from './RaceTokenWrapper'
 import { ExchangeProposalState, GrandaMentoWrapper } from './GrandaMento'
 import { StableTokenWrapper } from './StableTokenWrapper'
 
@@ -17,7 +17,7 @@ testWithGanache('GrandaMento Wrapper', (web3: Web3) => {
   const kit = newKitFromWeb3(web3)
   let accounts: Address[] = []
   let grandaMento: GrandaMentoWrapper
-  let celoToken: GoldTokenWrapper
+  let celoToken: RaceTokenWrapper
   let stableToken: StableTokenWrapper
   const newLimitMin = new BigNumber('1000')
   const newLimitMax = new BigNumber('1000000000000')
@@ -29,7 +29,7 @@ testWithGanache('GrandaMento Wrapper', (web3: Web3) => {
     grandaMento = await kit.contracts.getGrandaMento()
 
     stableToken = await kit.contracts.getStableToken(StableToken.cUSD)
-    celoToken = await kit.contracts.getGoldToken()
+    celoToken = await kit.contracts.getRaceToken()
     // Reset limits
     await assumeOwnership(web3, accounts[0])
     const zero = new BigNumber(0)
