@@ -1,6 +1,6 @@
 {
   "name": "@celo/faucet-app",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Faucet Web application for Celo",
   "author": "Celo",
   "license": "Apache-2.0",
