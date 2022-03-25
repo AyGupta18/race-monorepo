@@ -1,6 +1,6 @@
 {
   "name": "@celo/attestation-service",
-  "version": "1.6.0-dev",
+  "version": "1.6.0-dev.0",
   "description": "Issues attestation messages for Celo's identity protocol",
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -29,8 +29,8 @@
     "test-send-sms-twilio": "TS_NODE_FILES=true CONFIG=config/.env.development ts-node scripts/test-send-sms-twilio.ts"
   },
   "dependencies": {
-    "@celo/contractkit": "1.5.3-dev",
-    "@celo/identity": "1.5.3-dev",
+    "@celo/contractkit": "^1.5.3-dev.0",
+    "@celo/identity": "^1.5.3-dev.0",
     "@celo/keystores": "1.5.3-dev",
     "@celo/phone-utils": "1.5.3-dev",
     "bignumber.js": "^9.0.0",

@@ -1,3 +1,24 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+# 1.6.0-dev.0 (2022-03-25)
+
+
+### Bug Fixes
+
+* **dkg:** improve naming in the DKG ([#4062](https://github.com/celo-org/celo-monorepo/issues/4062)) ([88a4b0a](https://github.com/celo-org/celo-monorepo/commit/88a4b0a))
+
+
+### Features
+
+* **cli:** add DKG cli ([#3812](https://github.com/celo-org/celo-monorepo/issues/3812)) ([984696d](https://github.com/celo-org/celo-monorepo/commit/984696d))
+
+
+
+
+
 # Changelog
 All notable changes to the [celo cli package](https://www.npmjs.com/package/@celo/celocli) will be documented in this file. 
 
