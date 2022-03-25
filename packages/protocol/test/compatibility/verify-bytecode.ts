@@ -354,7 +354,7 @@ contract('', (accounts) => {
       it('throws when a proposal does not only proxy or registry repointing', async () => {
         const proposal = [
           {
-            contract: 'GoldToken',
+            contract: 'RaceToken',
             function: 'transfer',
             args: [NULL_ADDRESS, '100000000'],
             value: '0',

@@ -14,7 +14,7 @@ export enum CeloContract {
   FeeCurrencyWhitelist = 'FeeCurrencyWhitelist',
   Freezer = 'Freezer',
   GasPriceMinimum = 'GasPriceMinimum',
-  GoldToken = 'GoldToken',
+  RaceToken = 'RaceToken',
   Governance = 'Governance',
   GrandaMento = 'GrandaMento',
   LockedGold = 'LockedGold',
@@ -42,7 +42,7 @@ export type ExchangeContract =
   | CeloContract.ExchangeEUR
   | CeloContract.ExchangeBRL
 
-export type CeloTokenContract = StableTokenContract | CeloContract.GoldToken
+export type CeloTokenContract = StableTokenContract | CeloContract.RaceToken
 /**
  * Deprecated alias for CeloTokenContract.
  * @deprecated Use CeloTokenContract instead

@@ -14,7 +14,7 @@ import "../common/interfaces/ICeloVersionedContract.sol";
 import "../common/libraries/ReentrancyGuard.sol";
 
 /**
- * @title Contract that allows to exchange StableToken for GoldToken and vice versa
+ * @title Contract that allows to exchange StableToken for RaceToken and vice versa
  * using a Constant Product Market Maker Model
  */
 contract Exchange is
@@ -201,7 +201,7 @@ contract Exchange is
       goldBucket = goldBucket.add(sellAmount);
       stableBucket = stableBucket.sub(buyAmount);
       require(
-        getGoldToken().transferFrom(msg.sender, address(reserve), sellAmount),
+        getRaceToken().transferFrom(msg.sender, address(reserve), sellAmount),
         "Transfer of sell token failed"
       );
       require(IStableToken(stable).mint(msg.sender, buyAmount), "Mint of stable token failed");

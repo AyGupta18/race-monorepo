@@ -15,7 +15,7 @@ import { newExchangeEur } from './generated/ExchangeEUR'
 import { newFeeCurrencyWhitelist } from './generated/FeeCurrencyWhitelist'
 import { newFreezer } from './generated/Freezer'
 import { newGasPriceMinimum } from './generated/GasPriceMinimum'
-import { newGoldToken } from './generated/GoldToken'
+import { newRaceToken } from './generated/RaceToken'
 import { newGovernance } from './generated/Governance'
 import { newGrandaMento } from './generated/GrandaMento'
 import { newIerc20 } from './generated/IERC20'
@@ -51,7 +51,7 @@ export const ContractFactories = {
   [CeloContract.FeeCurrencyWhitelist]: newFeeCurrencyWhitelist,
   [CeloContract.Freezer]: newFreezer,
   [CeloContract.GasPriceMinimum]: newGasPriceMinimum,
-  [CeloContract.GoldToken]: newGoldToken,
+  [CeloContract.RaceToken]: newRaceToken,
   [CeloContract.Governance]: newGovernance,
   [CeloContract.GrandaMento]: newGrandaMento,
   [CeloContract.LockedGold]: newLockedGold,
@@ -123,8 +123,8 @@ export class Web3ContractCache {
   getGasPriceMinimum() {
     return this.getContract(CeloContract.GasPriceMinimum)
   }
-  getGoldToken() {
-    return this.getContract(CeloContract.GoldToken)
+  getRaceToken() {
+    return this.getContract(CeloContract.RaceToken)
   }
   getGovernance() {
     return this.getContract(CeloContract.Governance)

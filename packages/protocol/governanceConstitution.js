@@ -87,7 +87,7 @@ const DefaultConstitution = {
     setTargetDensity: 0.7,
     setGasPriceMinimumFloor: 0.7,
   },
-  GoldToken: {
+  RaceToken: {
     default: 0.9,
     transfer: 0.6,
     transferWithComment: 0.6,

@@ -4,7 +4,7 @@ import { ValidWrappers, WrapperCache } from './contract-cache'
 import { newKitFromWeb3 } from './kit'
 
 const TestedWrappers: ValidWrappers[] = [
-  CeloContract.GoldToken,
+  CeloContract.RaceToken,
   CeloContract.StableToken,
   CeloContract.StableTokenEUR,
   CeloContract.Exchange,

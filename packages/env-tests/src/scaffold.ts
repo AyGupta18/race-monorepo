@@ -114,7 +114,7 @@ export async function clearAllFundsToRoot(
   // Refund all to root
   const root = await getKey(context.mnemonic, TestAccounts.Root)
   context.logger.debug({ root: root.address }, 'Clearing funds of test accounts back to root')
-  const goldToken = await context.kit.contracts.getGoldToken()
+  const goldToken = await context.kit.contracts.getRaceToken()
   await concurrentMap(5, accounts, async (_val, index) => {
     if (index === 0) {
       return

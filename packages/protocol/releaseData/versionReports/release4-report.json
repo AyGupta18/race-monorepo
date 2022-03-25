@@ -209,14 +209,14 @@
           "patch": "0"
         }
       },
-      "GoldToken": {
+      "RaceToken": {
         "changes": {
           "storage": [],
           "major": [],
           "minor": [],
           "patch": [
             {
-              "contract": "GoldToken",
+              "contract": "RaceToken",
               "type": "DeployedBytecode"
             }
           ]

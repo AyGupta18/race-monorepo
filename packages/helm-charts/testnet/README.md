@@ -60,7 +60,7 @@ yarn run download-artifacts -n $NAME
 
 This will download the build artifacts to your build folder, as if you deployed the contracts yourself.
 
-You should be sure to update the appropriate yaml file in `packages/blockchain-api/` with the addresses of the GoldToken and StableToken proxy contracts.
+You should be sure to update the appropriate yaml file in `packages/blockchain-api/` with the addresses of the RaceToken and StableToken proxy contracts.
 
 The last step is to update the contract ABIs and addresses for use in the mobile app as per [mobile README](../../mobile/README.md)
 

@@ -69,7 +69,7 @@ export const handler = async (argv: CeloEnvArgv & FaucetLoadTest) => {
     kit.defaultAccount = account
 
     const [goldToken, stableToken] = await Promise.all([
-      kit.contracts.getGoldToken(),
+      kit.contracts.getRaceToken(),
       kit.contracts.getStableToken(),
     ])
 

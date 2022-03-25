@@ -17,8 +17,8 @@ import {
   AccountsInstance,
   FreezerContract,
   FreezerInstance,
-  GoldTokenContract,
-  GoldTokenInstance,
+  RaceTokenContract,
+  RaceTokenInstance,
   LockedGoldContract,
   LockedGoldInstance,
   MockElectionContract,
@@ -74,7 +74,7 @@ interface ReleaseGoldConfig {
 
 const Accounts: AccountsContract = artifacts.require('Accounts')
 const Freezer: FreezerContract = artifacts.require('Freezer')
-const GoldToken: GoldTokenContract = artifacts.require('GoldToken')
+const RaceToken: RaceTokenContract = artifacts.require('RaceToken')
 const LockedGold: LockedGoldContract = artifacts.require('LockedGold')
 const MockStableToken: MockStableTokenContract = artifacts.require('MockStableToken')
 const MockElection: MockElectionContract = artifacts.require('MockElection')
@@ -91,7 +91,7 @@ ReleaseGold.numberFormat = 'BigNumber'
 // @ts-ignore
 MockStableToken.numberFormat = 'BigNumber'
 // @ts-ignore
-GoldToken.numberFormat = 'BigNumber'
+RaceToken.numberFormat = 'BigNumber'
 
 const MINUTE = 60
 const HOUR = 60 * 60
@@ -109,7 +109,7 @@ contract('ReleaseGold', (accounts: string[]) => {
   const newBeneficiary = accounts[4]
   let accountsInstance: AccountsInstance
   let freezerInstance: FreezerInstance
-  let goldTokenInstance: GoldTokenInstance
+  let goldTokenInstance: RaceTokenInstance
   let lockedGoldInstance: LockedGoldInstance
   let mockElection: MockElectionInstance
   let mockGovernance: MockGovernanceInstance
@@ -189,7 +189,7 @@ contract('ReleaseGold', (accounts: string[]) => {
   beforeEach(async () => {
     accountsInstance = await Accounts.new(true)
     freezerInstance = await Freezer.new(true)
-    goldTokenInstance = await GoldToken.new(true)
+    goldTokenInstance = await RaceToken.new(true)
     lockedGoldInstance = await LockedGold.new(true)
     mockElection = await MockElection.new()
     mockGovernance = await MockGovernance.new()
@@ -200,7 +200,7 @@ contract('ReleaseGold', (accounts: string[]) => {
     await registry.setAddressFor(CeloContractName.Accounts, accountsInstance.address)
     await registry.setAddressFor(CeloContractName.Election, mockElection.address)
     await registry.setAddressFor(CeloContractName.Freezer, freezerInstance.address)
-    await registry.setAddressFor(CeloContractName.GoldToken, goldTokenInstance.address)
+    await registry.setAddressFor(CeloContractName.RaceToken, goldTokenInstance.address)
     await registry.setAddressFor(CeloContractName.Governance, mockGovernance.address)
     await registry.setAddressFor(CeloContractName.LockedGold, lockedGoldInstance.address)
     await registry.setAddressFor(CeloContractName.Validators, mockValidators.address)

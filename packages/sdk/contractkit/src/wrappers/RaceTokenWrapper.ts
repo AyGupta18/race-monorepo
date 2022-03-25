@@ -3,7 +3,7 @@
 // referencing '@celo/utils/node_modules/bignumber.js'
 import { Address } from '@celo/base'
 import 'bignumber.js'
-import { GoldToken } from '../generated/GoldToken'
+import { RaceToken } from '../generated/RaceToken'
 import {
   proxySend,
   stringIdentity,
@@ -16,7 +16,7 @@ import { CeloTokenWrapper } from './CeloTokenWrapper'
 /**
  * ERC-20 contract for Celo native currency.
  */
-export class GoldTokenWrapper extends CeloTokenWrapper<GoldToken> {
+export class RaceTokenWrapper extends CeloTokenWrapper<RaceToken> {
   /**
    * Increases the allowance of another user.
    * @param spender The address which is being approved to spend CELO.

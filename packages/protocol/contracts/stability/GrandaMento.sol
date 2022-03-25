@@ -236,7 +236,7 @@ contract GrandaMento is
     }
 
     // Deposit the assets being sold.
-    IERC20 sellToken = sellCelo ? getGoldToken() : IERC20(stableToken);
+    IERC20 sellToken = sellCelo ? getRaceToken() : IERC20(stableToken);
     require(
       sellToken.transferFrom(msg.sender, address(this), sellAmount),
       "Transfer in of sell token failed"
@@ -404,7 +404,7 @@ contract GrandaMento is
     IERC20 sellToken;
     uint256 sellAmount;
     if (proposal.sellCelo) {
-      sellToken = getGoldToken();
+      sellToken = getRaceToken();
       sellAmount = proposal.sellAmount;
     } else {
       address stableToken = proposal.stableToken;

@@ -11,7 +11,7 @@ contract RegistryHarness is IRegistryExtended {
   bytes32 constant GAS_CURRENCY_WHITELIST_REGISTRY_ID = keccak256(
     abi.encodePacked("GasCurrencyWhitelist")
   );
-  bytes32 constant GOLD_TOKEN_REGISTRY_ID = keccak256(abi.encodePacked("GoldToken"));
+  bytes32 constant GOLD_TOKEN_REGISTRY_ID = keccak256(abi.encodePacked("RaceToken"));
   bytes32 constant GOVERNANCE_REGISTRY_ID = keccak256(abi.encodePacked("Governance"));
   bytes32 constant RESERVE_REGISTRY_ID = keccak256(abi.encodePacked("Reserve"));
   bytes32 constant RANDOM_REGISTRY_ID = keccak256(abi.encodePacked("Random"));
@@ -19,7 +19,7 @@ contract RegistryHarness is IRegistryExtended {
   bytes32 constant VALIDATORS_REGISTRY_ID = keccak256(abi.encodePacked("Validators"));
 
   uint256 constant iamValidators = 1;
-  uint256 constant iamGoldToken = 2;
+  uint256 constant iamRaceToken = 2;
   uint256 constant iamGovernance = 3;
   uint256 constant iamLockedGold = 4;
 
@@ -31,7 +31,7 @@ contract RegistryHarness is IRegistryExtended {
     if (identifier == VALIDATORS_REGISTRY_ID) {
       whoami = iamValidators;
     } else if (identifier == GOLD_TOKEN_REGISTRY_ID) {
-      whoami = iamGoldToken;
+      whoami = iamRaceToken;
     } else if (identifier == GOVERNANCE_REGISTRY_ID) {
       whoami = iamGovernance;
     } else if (identifier == LOCKED_GOLD_REGISTRY_ID) {

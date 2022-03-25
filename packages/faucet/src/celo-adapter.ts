@@ -23,7 +23,7 @@ export class CeloAdapter {
   }
 
   async transferGold(to: string, amount: string): Promise<CeloTransactionObject<boolean>> {
-    const goldToken = await this.kit.contracts.getGoldToken()
+    const goldToken = await this.kit.contracts.getRaceToken()
     return goldToken.transfer(to, amount)
   }
 

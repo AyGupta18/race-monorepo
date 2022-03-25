@@ -32,7 +32,7 @@ export default class Propose extends BaseCommand {
   }
 
   async run() {
-    const celoToken = await this.kit.contracts.getGoldToken()
+    const celoToken = await this.kit.contracts.getRaceToken()
     const grandaMento = await this.kit.contracts.getGrandaMento()
 
     const res = this.parse(Propose)
