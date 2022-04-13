@@ -1,7 +1,26 @@
 {
   "functions": {
     "source": ".",
-    "predeploy": ["yarn run lint", "yarn run build"]
+    "predeploy": [
+      "yarn run lint",
+      "yarn run build"
+    ]
   },
-  "database": [{ "target": "faucet", "rules": "database-rules.bolt" }]
+  "database": [
+    {
+      "target": "faucet",
+      "rules": "database.rules.json"
+    }
+  ],
+  "emulators": {
+    "functions": {
+      "port": 5001
+    },
+    "database": {
+      "port": 9000
+    },
+    "ui": {
+      "enabled": true
+    }
+  }
 }

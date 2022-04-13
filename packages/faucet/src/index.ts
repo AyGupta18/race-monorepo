@@ -1,5 +1,6 @@
 import * as admin from 'firebase-admin'
 import * as functions from 'firebase-functions'
+import { log } from 'firebase-functions/logger'
 import { getNetworkConfig } from './config'
 import { AccountPool, processRequest } from './database-helper'
 
@@ -8,7 +9,8 @@ const PROCESSOR_RUNTIME_OPTS: functions.RuntimeOptions = {
   timeoutSeconds: 120,
   memory: '512MB',
 }
-admin.initializeApp(functions.config().firebase)
+
+admin.initializeApp()
 
 const db = admin.database()
 
@@ -19,7 +21,9 @@ export const faucetRequestProcessor = functions
   .database.ref('/{network}/requests/{request}')
   .onCreate(async (snap, ctx) => {
     const network: string = ctx.params.network
+    log('network: ', network)
     const config = getNetworkConfig(network)
+    log('config in index', config)
     const pool = new AccountPool(db, network, {
       retryWaitMS: SECOND,
       getAccountTimeoutMS: 20 * SECOND,

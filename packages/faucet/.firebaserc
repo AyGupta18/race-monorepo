@@ -1,19 +1,12 @@
 {
   "projects": {
-    "default": "celo-faucet"
+    "default": "race-faucet-new"
   },
   "targets": {
-    "celo-faucet": {
+    "race-faucet-new": {
       "database": {
         "faucet": [
-          "celo-faucet"
-        ]
-      }
-    },
-    "celo-faucet-staging": {
-      "database": {
-        "faucet": [
-          "celo-faucet-staging"
+          "race-faucet-new"
         ]
       }
     }

@@ -1,0 +1,16 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by io.netty.util.internal.ReflectionUtil (file:/home/deq/.cache/firebase/emulators/firebase-database-emulator-v4.5.0.jar) to field sun.nio.ch.SelectorImpl.selectedKeys
+WARNING: Please consider reporting this to the maintainers of io.netty.util.internal.ReflectionUtil
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+20:04:29.038 [NamespaceSystem-akka.actor.default-dispatcher-4] INFO akka.event.slf4j.Slf4jLogger - Slf4jLogger started
+20:04:29.208 [main] INFO com.firebase.server.forge.App$ - Listening at localhost:9000
+20:04:30.792 [NamespaceSystem-akka.actor.default-dispatcher-4] WARN com.firebase.server.forge.App$ - Received service account token ya29......., assuming ownership.
+20:05:02.116 [NamespaceSystem-akka.actor.default-dispatcher-9] WARN com.firebase.server.forge.App$ - Received service account token ya29......., assuming ownership.
+09:13:46.330 [NamespaceSystem-akka.actor.default-dispatcher-15] WARN com.firebase.server.forge.App$ - Received service account token ya29......., assuming ownership.
+11:13:12.956 [NamespaceSystem-akka.actor.default-dispatcher-18] WARN com.firebase.server.forge.App$ - Received service account token ya29......., assuming ownership.
+11:43:49.755 [Thread-0] INFO com.firebase.server.forge.App$ - Attempting graceful shutdown.
+11:43:49.764 [NamespaceSystem-akka.actor.default-dispatcher-19] INFO com.firebase.core.namespace.Terminator$Terminator - 1 actors left to terminate: race-faucet-new
+11:43:49.773 [NamespaceSystem-akka.actor.default-dispatcher-22] INFO com.firebase.core.namespace.NamespaceActor - Stopping namespace actor for race-faucet-new
+11:43:49.773 [NamespaceSystem-akka.actor.default-dispatcher-22] INFO com.firebase.core.namespace.NamespaceActor - Gauges removed for race-faucet-new
+11:43:49.775 [Thread-0] INFO com.firebase.server.forge.App$ - Graceful shutdown complete.
