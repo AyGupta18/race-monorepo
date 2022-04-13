@@ -350,7 +350,7 @@ export const isSameAddress = (minerAddress, otherAddress) => {
 export const proxiedContracts: string[] = [
   'Attestations',
   'Escrow',
-  'GoldToken',
+  'RaceToken',
   'Registry',
   'Reserve',
   'SortedOracles',

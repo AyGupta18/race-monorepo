@@ -7,7 +7,7 @@ import {
 } from '@celo/protocol/lib/web3-utils'
 import BigNumber from 'bignumber.js'
 import twilio from 'twilio'
-import { AttestationsInstance, EscrowInstance, GoldTokenInstance, StableTokenInstance } from 'types'
+import { AttestationsInstance, EscrowInstance, RaceTokenInstance, StableTokenInstance } from 'types'
 import Web3 from 'web3'
 
 const truffle = require('@celo/protocol/truffle-config.js')
@@ -47,7 +47,7 @@ module.exports = async (callback: (error?: any) => number) => {
     )
 
     logTime('Getting Gold token...')
-    const goldTokenPromise = getDeployedProxiedContract<GoldTokenInstance>('GoldToken', artifacts)
+    const goldTokenPromise = getDeployedProxiedContract<RaceTokenInstance>('RaceToken', artifacts)
     logTime('Getting stable token...')
     const stableTokenPromise = getDeployedProxiedContract<StableTokenInstance>(
       'StableToken',

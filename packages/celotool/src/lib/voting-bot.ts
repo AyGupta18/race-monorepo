@@ -25,7 +25,7 @@ export async function setupVotingBotAccounts(celoEnv: string) {
   const numBotAccounts = parseInt(fetchEnv(envVar.VOTING_BOTS), 10)
 
   const kit: ContractKit = newKitFromWeb3(new Web3(fornoUrl))
-  const goldToken = await kit.contracts.getGoldToken()
+  const goldToken = await kit.contracts.getRaceToken()
   const lockedGold = await kit.contracts.getLockedGold()
   const accounts = await kit.contracts.getAccounts()
 

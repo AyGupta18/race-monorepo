@@ -40,7 +40,7 @@ export const setBalance = (balance: string): SetBalanceAction => ({
   balance,
 })
 
-export const transferGoldToken = ({
+export const transferRaceToken = ({
   recipientAddress,
   amount,
   comment,

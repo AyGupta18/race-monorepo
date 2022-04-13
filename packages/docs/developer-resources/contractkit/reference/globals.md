@@ -32,7 +32,7 @@
 * ["wrappers/Exchange"](modules/_wrappers_exchange_.md)
 * ["wrappers/Freezer"](modules/_wrappers_freezer_.md)
 * ["wrappers/GasPriceMinimum"](modules/_wrappers_gaspriceminimum_.md)
-* ["wrappers/GoldTokenWrapper"](modules/_wrappers_goldtokenwrapper_.md)
+* ["wrappers/RaceTokenWrapper"](modules/_wrappers_goldtokenwrapper_.md)
 * ["wrappers/Governance"](modules/_wrappers_governance_.md)
 * ["wrappers/LockedGold"](modules/_wrappers_lockedgold_.md)
 * ["wrappers/MetaTransactionWallet"](modules/_wrappers_metatransactionwallet_.md)

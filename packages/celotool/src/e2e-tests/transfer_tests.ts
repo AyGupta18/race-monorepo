@@ -136,17 +136,17 @@ interface BalanceWatcher {
 
 async function newBalanceWatcher(kit: ContractKit, accounts: string[]): Promise<BalanceWatcher> {
   const stableToken = await kit.contracts.getStableToken()
-  const goldToken = await kit.contracts.getGoldToken()
+  const goldToken = await kit.contracts.getRaceToken()
 
   async function fetch() {
     const balances: Record<
       string,
-      { [CeloContract.GoldToken]: BigNumber; [CeloContract.StableToken]: BigNumber }
+      { [CeloContract.RaceToken]: BigNumber; [CeloContract.StableToken]: BigNumber }
     > = {}
     await Promise.all(
       accounts.map(async (a) => {
         balances[a] = {
-          [CeloContract.GoldToken]: await goldToken.balanceOf(a),
+          [CeloContract.RaceToken]: await goldToken.balanceOf(a),
           [CeloContract.StableToken]: await stableToken.balanceOf(a),
         }
       })
@@ -683,8 +683,8 @@ describe('Transfer tests', function(this: any) {
                         } else {
                           testTransferToken({
                             expectedGas: INTRINSIC_TX_GAS_COST,
-                            transferToken: CeloContract.GoldToken,
-                            feeToken: CeloContract.GoldToken,
+                            transferToken: CeloContract.RaceToken,
+                            feeToken: CeloContract.RaceToken,
                             txOptions,
                           })
                         }
@@ -696,8 +696,8 @@ describe('Transfer tests', function(this: any) {
             } else {
               testTransferToken({
                 expectedGas: INTRINSIC_TX_GAS_COST,
-                transferToken: CeloContract.GoldToken,
-                feeToken: CeloContract.GoldToken,
+                transferToken: CeloContract.RaceToken,
+                feeToken: CeloContract.RaceToken,
               })
             }
           })
@@ -709,7 +709,7 @@ describe('Transfer tests', function(this: any) {
               describe('when setting a gas amount greater than the amount of gas necessary', () =>
                 testTransferToken({
                   expectedGas: intrinsicGas,
-                  transferToken: CeloContract.GoldToken,
+                  transferToken: CeloContract.RaceToken,
                   feeToken: CeloContract.StableToken,
                 }))
 
@@ -750,7 +750,7 @@ describe('Transfer tests', function(this: any) {
               expectedGas:
                 stableTokenTransferGasCost + INTRINSIC_TX_GAS_COST + sstoreCleanRefundEIP2200,
               transferToken: CeloContract.StableToken,
-              feeToken: CeloContract.GoldToken,
+              feeToken: CeloContract.RaceToken,
             })
           })
         })
@@ -786,7 +786,7 @@ describe('Transfer tests', function(this: any) {
               describe('when setting a gas amount greater than the amount of gas necessary', () =>
                 testTransferToken({
                   expectedGas: intrinsicGas,
-                  transferToken: CeloContract.GoldToken,
+                  transferToken: CeloContract.RaceToken,
                   feeToken: CeloContract.StableToken,
                 }))
 
@@ -863,13 +863,13 @@ describe('Transfer tests', function(this: any) {
 
             it("should decrement the sender's Celo Gold balance by the transfer amount", () => {
               assertEqualBN(
-                balances.delta(FromAddress, CeloContract.GoldToken).negated(),
+                balances.delta(FromAddress, CeloContract.RaceToken).negated(),
                 TransferAmount
               )
             })
 
             it("should increment the receiver's Celo Gold balance by the transfer amount", () => {
-              assertEqualBN(balances.delta(ToAddress, CeloContract.GoldToken), TransferAmount)
+              assertEqualBN(balances.delta(ToAddress, CeloContract.RaceToken), TransferAmount)
             })
 
             it("should halve the sender's Celo Dollar balance due to demurrage and decrement it by the total fees", () => {
@@ -914,12 +914,12 @@ describe('Transfer tests', function(this: any) {
 
         describe('when CeloGold is frozen', () => {
           before('ensure gold transfers are frozen', async () => {
-            await freeze('http://localhost:8545', validatorAddress, CeloContract.GoldToken)
+            await freeze('http://localhost:8545', validatorAddress, CeloContract.RaceToken)
           })
 
           describe('check if frozen', () => {
             it('should be frozen', async () => {
-              const goldTokenAddress = await kit.registry.addressFor(CeloContract.GoldToken)
+              const goldTokenAddress = await kit.registry.addressFor(CeloContract.RaceToken)
               const freezer = await kit.contracts.getFreezer()
               const isFrozen = await freezer.isFrozen(goldTokenAddress)
               assert(isFrozen)
@@ -940,8 +940,8 @@ describe('Transfer tests', function(this: any) {
               const whitelistedAddress = await kit.registry.addressFor(CeloContract.LockedGold)
               testTransferToken({
                 expectedGas: INTRINSIC_TX_GAS_COST + ADDITIONAL_INTRINSIC_TX_GAS_COST,
-                transferToken: CeloContract.GoldToken,
-                feeToken: CeloContract.GoldToken,
+                transferToken: CeloContract.RaceToken,
+                feeToken: CeloContract.RaceToken,
                 toAddress: whitelistedAddress,
               })
             })
@@ -953,8 +953,8 @@ describe('Transfer tests', function(this: any) {
             it('should transfer succesfully', async () => {
               testTransferToken({
                 expectedGas: INTRINSIC_TX_GAS_COST + ADDITIONAL_INTRINSIC_TX_GAS_COST,
-                transferToken: CeloContract.GoldToken,
-                feeToken: CeloContract.GoldToken,
+                transferToken: CeloContract.RaceToken,
+                feeToken: CeloContract.RaceToken,
               })
             })
 
@@ -964,7 +964,7 @@ describe('Transfer tests', function(this: any) {
               })
               testTxPoolFiltering({
                 gas: INTRINSIC_TX_GAS_COST + ADDITIONAL_INTRINSIC_TX_GAS_COST,
-                feeToken: CeloContract.GoldToken,
+                feeToken: CeloContract.RaceToken,
                 expectedError: 'Error: transfers are currently frozen',
               })
             })
@@ -972,13 +972,13 @@ describe('Transfer tests', function(this: any) {
 
           describe('when gold transfers are unfrozen again', async () => {
             before('unfreeze gold transfers', async () => {
-              await unfreeze('http://localhost:8545', validatorAddress, CeloContract.GoldToken)
+              await unfreeze('http://localhost:8545', validatorAddress, CeloContract.RaceToken)
             })
             it('should transfer normally', async () => {
               testTransferToken({
                 expectedGas: INTRINSIC_TX_GAS_COST + ADDITIONAL_INTRINSIC_TX_GAS_COST,
-                transferToken: CeloContract.GoldToken,
-                feeToken: CeloContract.GoldToken,
+                transferToken: CeloContract.RaceToken,
+                feeToken: CeloContract.RaceToken,
               })
             })
           })

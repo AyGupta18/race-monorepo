@@ -6,7 +6,7 @@ celo-blockchain has two initial coins: CELO and cUSD (stableToken).
 Both implement the ERC20 standard, and to interact with them is as simple as:
 
 ```ts
-const goldtoken = await kit.contract.getGoldToken()
+const goldtoken = await kit.contract.getRaceToken()
 
 const balance = await goldtoken.balanceOf(someAddress)
 ```
@@ -31,7 +31,7 @@ const stabletoken = await kit.contract.getStableToken()
 
 ## Interacting with Other Celo Contracts
 
-Apart from GoldToken and StableToken, there are many core contracts.
+Apart from RaceToken and StableToken, there are many core contracts.
 
 For the moment, we have contract wrappers for:
 
@@ -44,7 +44,7 @@ For the moment, we have contract wrappers for:
 - Escrow
 - Exchange (Uniswap kind exchange between Gold and Stable tokens)
 - GasPriceMinimum
-- GoldToken
+- RaceToken
 - Gobernance
 - LockedGold
 - Reserve
@@ -60,7 +60,7 @@ That's actually how `kit` obtain them.
 We expose the registry api, which can be accessed by:
 
 ```ts
-const goldTokenAddress = await kit.registry.addressFor(CeloContract.GoldToken)
+const goldTokenAddress = await kit.registry.addressFor(CeloContract.RaceToken)
 ```
 
 ## Accessing web3 contract wrappers
@@ -89,7 +89,7 @@ The complete list is:
 - Exchange
 - FeeCurrencyWhiteList
 - GasPriceMinimum
-- GoldToken
+- RaceToken
 - Governance
 - LockedGold
 - Random

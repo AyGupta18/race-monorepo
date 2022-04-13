@@ -57,7 +57,7 @@ export const handler = async (argv: InviteArgv) => {
     const inviteCode = Buffer.from(privateKeyHex, 'hex').toString('base64')
 
     const [goldToken, stableToken, attestations, escrow] = await Promise.all([
-      kit.contracts.getGoldToken(),
+      kit.contracts.getRaceToken(),
       kit.contracts.getStableToken(),
       kit.contracts.getAttestations(),
       kit.contracts.getEscrow(),

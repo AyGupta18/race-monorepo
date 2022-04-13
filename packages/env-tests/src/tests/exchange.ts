@@ -17,7 +17,7 @@ export function runExchangeTest(context: EnvTestContext) {
       context.kit.defaultAccount = from.address
       const stableToken = await context.kit.contracts.getStableToken()
       context.kit.connection.defaultFeeCurrency = stableToken.address
-      const goldToken = await context.kit.contracts.getGoldToken()
+      const goldToken = await context.kit.contracts.getRaceToken()
       const exchange = await context.kit.contracts.getExchange()
 
       const previousGoldBalance = await goldToken.balanceOf(from.address)

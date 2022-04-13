@@ -8,7 +8,7 @@ import { escrowReducer as escrow, State as EscrowState } from 'src/escrow/reduce
 import { reducer as exchange, State as ExchangeState } from 'src/exchange/reducer'
 import { reducer as fees, State as FeesState } from 'src/fees/reducer'
 import { gethReducer as geth, State as GethState } from 'src/geth/reducer'
-import { reducer as goldToken, State as GoldTokenState } from 'src/goldToken/reducer'
+import { reducer as goldToken, State as RaceTokenState } from 'src/goldToken/reducer'
 import { homeReducer as home, State as HomeState } from 'src/home/reducers'
 import { reducer as identity, State as IdentityState } from 'src/identity/reducer'
 import { reducer as imports, State as ImportState } from 'src/import/reducer'
@@ -70,7 +70,7 @@ export interface RootState {
   networkInfo: NetworkInfoState
   alert: AlertState
   send: SendState
-  goldToken: GoldTokenState
+  goldToken: RaceTokenState
   stableToken: StableTokenState
   home: HomeState
   exchange: ExchangeState
@@ -92,7 +92,7 @@ export interface PersistedRootState {
   _persist: PersistState
   app: AppState
   send: SendState
-  goldToken: GoldTokenState
+  goldToken: RaceTokenState
   stableToken: StableTokenState
   home: HomeState
   transactions: TransactionsState

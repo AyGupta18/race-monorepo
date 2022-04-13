@@ -1,7 +1,7 @@
 // tslint:disable:no-console
 import { CeloTxReceipt, TransactionResult } from '@celo/connect'
 import { CeloContract, ContractKit, newKitFromWeb3 } from '@celo/contractkit'
-import { GoldTokenWrapper } from '@celo/contractkit/lib/wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from '@celo/contractkit/lib/wrappers/RaceTokenWrapper'
 import { StableTokenWrapper } from '@celo/contractkit/lib/wrappers/StableTokenWrapper'
 import { waitForPortOpen } from '@celo/dev-utils/lib/network'
 import BigNumber from 'bignumber.js'
@@ -188,7 +188,7 @@ export const checkGethStarted = (dataDir: string) => {
 export const getWeb3AndTokensContracts = async () => {
   const kit = newKitFromWeb3(new Web3('http://localhost:8545'))
   const [goldToken, stableToken] = await Promise.all([
-    kit.contracts.getGoldToken(),
+    kit.contracts.getRaceToken(),
     kit.contracts.getStableToken(),
   ])
 
@@ -203,7 +203,7 @@ export const getRandomInt = (from: number, to: number) => {
   return Math.floor(Math.random() * (to - from)) + from
 }
 
-const getRandomToken = (goldToken: GoldTokenWrapper, stableToken: StableTokenWrapper) => {
+const getRandomToken = (goldToken: RaceTokenWrapper, stableToken: StableTokenWrapper) => {
   const tokenType = getRandomInt(0, 2)
   if (tokenType === 0) {
     return goldToken
@@ -316,7 +316,7 @@ const exitTracerTool = (logMessage: any) => {
 
 const transferAndTrace = async (
   kit: ContractKit,
-  goldToken: GoldTokenWrapper,
+  goldToken: RaceTokenWrapper,
   stableToken: StableTokenWrapper,
   from: string,
   to: string,
@@ -393,7 +393,7 @@ const transferAndTrace = async (
 
 export const traceTransactions = async (
   kit: ContractKit,
-  goldToken: GoldTokenWrapper,
+  goldToken: RaceTokenWrapper,
   stableToken: StableTokenWrapper,
   addresses: string[],
   blockscoutUrl: string
@@ -451,8 +451,8 @@ export const transferCeloGold = async (
     gatewayFee?: string
   } = {}
 ) => {
-  const kitGoldToken = await kit.contracts.getGoldToken()
-  return kitGoldToken.transfer(toAddress, amount.toString()).send({
+  const kitRaceToken = await kit.contracts.getRaceToken()
+  return kitRaceToken.transfer(toAddress, amount.toString()).send({
     from: fromAddress,
     gas: txOptions.gas,
     gasPrice: txOptions.gasPrice,
@@ -628,7 +628,7 @@ export const onLoadTestTxResult = async (
  */
 export const transferERC20Token = async (
   kit: ContractKit,
-  token: GoldTokenWrapper | StableTokenWrapper,
+  token: RaceTokenWrapper | StableTokenWrapper,
   from: string,
   to: string,
   amount: BigNumber,

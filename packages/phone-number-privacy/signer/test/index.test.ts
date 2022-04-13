@@ -65,7 +65,7 @@ describe(`POST /getBlindedMessageSignature endpoint`, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(3, 3),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(0)

@@ -102,9 +102,9 @@
 
 *Defined in [contractkit/src/web3-contract-cache.ts:45](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/web3-contract-cache.ts#L45)*
 
-###  [CeloContract.GoldToken]
+###  [CeloContract.RaceToken]
 
-• **[CeloContract.GoldToken]**: *newGoldToken* = newGoldToken
+• **[CeloContract.RaceToken]**: *newRaceToken* = newRaceToken
 
 *Defined in [contractkit/src/web3-contract-cache.ts:46](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/web3-contract-cache.ts#L46)*
 

@@ -16,7 +16,7 @@
 * [FeeCurrencyWhitelist](_base_.celocontract.md#feecurrencywhitelist)
 * [Freezer](_base_.celocontract.md#freezer)
 * [GasPriceMinimum](_base_.celocontract.md#gaspriceminimum)
-* [GoldToken](_base_.celocontract.md#goldtoken)
+* [RaceToken](_base_.celocontract.md#goldtoken)
 * [Governance](_base_.celocontract.md#governance)
 * [LockedGold](_base_.celocontract.md#lockedgold)
 * [MetaTransactionWallet](_base_.celocontract.md#metatransactionwallet)
@@ -128,9 +128,9 @@ ___
 
 ___
 
-###  GoldToken
+###  RaceToken
 
-• **GoldToken**: = "GoldToken"
+• **RaceToken**: = "RaceToken"
 
 *Defined in [contractkit/src/base.ts:14](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/base.ts#L14)*
 

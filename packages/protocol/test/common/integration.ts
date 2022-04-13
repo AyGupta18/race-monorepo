@@ -16,7 +16,7 @@ import BigNumber from 'bignumber.js'
 import {
   ElectionInstance,
   ExchangeInstance,
-  GoldTokenInstance,
+  RaceTokenInstance,
   GovernanceApproverMultiSigInstance,
   GovernanceInstance,
   GovernanceSlasherInstance,
@@ -391,7 +391,7 @@ Array.from([
     let exchange: ExchangeInstance
     let multiSig: ReserveSpenderMultiSigInstance
     let reserve: ReserveInstance
-    let goldToken: GoldTokenInstance
+    let goldToken: RaceTokenInstance
     let stableToken: StableTokenInstance
     let originalStable
     let originalGold
@@ -407,7 +407,7 @@ Array.from([
       stableToken = await getDeployedProxiedContract(stableTokenId, artifacts)
       multiSig = await getDeployedProxiedContract('ReserveSpenderMultiSig', artifacts)
       reserve = await getDeployedProxiedContract('Reserve', artifacts)
-      goldToken = await getDeployedProxiedContract('GoldToken', artifacts)
+      goldToken = await getDeployedProxiedContract('RaceToken', artifacts)
     })
 
     describe('Selling', () => {

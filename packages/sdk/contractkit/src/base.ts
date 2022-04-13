@@ -11,7 +11,7 @@ export enum CeloContract {
   FeeCurrencyWhitelist = 'FeeCurrencyWhitelist',
   Freezer = 'Freezer',
   GasPriceMinimum = 'GasPriceMinimum',
-  GoldToken = 'GoldToken',
+  RaceToken = 'RaceToken',
   Governance = 'Governance',
   LockedGold = 'LockedGold',
   MetaTransactionWallet = 'MetaTransactionWallet',
@@ -28,7 +28,7 @@ export enum CeloContract {
 
 export const ProxyContracts = Object.keys(CeloContract).map((c) => `${c}Proxy`)
 
-export type CeloToken = CeloContract.GoldToken | CeloContract.StableToken
+export type CeloToken = CeloContract.RaceToken | CeloContract.StableToken
 
 export const AllContracts = Object.keys(CeloContract) as CeloContract[]
 const AuxiliaryContracts = [

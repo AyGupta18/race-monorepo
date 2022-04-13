@@ -6,7 +6,7 @@ import {
   FreezerContract,
   GetSetV0Instance,
   GetSetV1Instance,
-  GoldTokenContract,
+  RaceTokenContract,
   HasInitializerInstance,
   MsgSenderCheckInstance,
   ProxyInstance,
@@ -231,13 +231,13 @@ contract('Proxy', (accounts: string[]) => {
 
   it('recovers funds from an incorrectly intialized implementation', async () => {
     const Freezer: FreezerContract = artifacts.require('Freezer')
-    const GoldToken: GoldTokenContract = artifacts.require('GoldToken')
+    const RaceToken: RaceTokenContract = artifacts.require('RaceToken')
     // @ts-ignore
-    GoldToken.numberFormat = 'BigNumber'
+    RaceToken.numberFormat = 'BigNumber'
     const Registry: RegistryContract = artifacts.require('Registry')
 
     const freezer = await Freezer.new()
-    const goldToken = await GoldToken.new()
+    const goldToken = await RaceToken.new()
     const registry = await Registry.new()
     await registry.setAddressFor(CeloContractName.Freezer, freezer.address)
     await goldToken.initialize(registry.address)

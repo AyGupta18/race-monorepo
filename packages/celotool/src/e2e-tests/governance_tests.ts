@@ -251,7 +251,7 @@ describe('governance tests', () => {
     web3 = new Web3('http://localhost:8545')
     kit = newKitFromWeb3(web3)
 
-    goldToken = await kit._web3Contracts.getGoldToken()
+    goldToken = await kit._web3Contracts.getRaceToken()
     stableToken = await kit._web3Contracts.getStableToken()
     sortedOracles = await kit._web3Contracts.getSortedOracles()
     validators = await kit._web3Contracts.getValidators()
@@ -355,10 +355,10 @@ describe('governance tests', () => {
     return epochNumber * epoch
   }
 
-  const assertGoldTokenTotalSupplyUnchanged = (blockNumber: number) =>
-    assertGoldTokenTotalSupplyChanged(blockNumber, new BigNumber(0))
+  const assertRaceTokenTotalSupplyUnchanged = (blockNumber: number) =>
+    assertRaceTokenTotalSupplyChanged(blockNumber, new BigNumber(0))
 
-  const assertGoldTokenTotalSupplyChanged = async (blockNumber: number, expected: BigNumber) => {
+  const assertRaceTokenTotalSupplyChanged = async (blockNumber: number, expected: BigNumber) => {
     const currentSupply = new BigNumber(await goldToken.methods.totalSupply().call({}, blockNumber))
     const previousSupply = new BigNumber(
       await goldToken.methods.totalSupply().call({}, blockNumber - 1)
@@ -811,14 +811,14 @@ describe('governance tests', () => {
             expectedCommunityReward.plus(await blockBaseGasFee(blockNumber))
           )
           await assertReserveBalanceChanged(blockNumber, stableTokenSupplyChange.div(exchangeRate))
-          await assertGoldTokenTotalSupplyChanged(blockNumber, expectedGoldTotalSupplyChange)
+          await assertRaceTokenTotalSupplyChanged(blockNumber, expectedGoldTotalSupplyChange)
           await assertCarbonOffsettingBalanceChanged(
             blockNumber,
             expectedCarbonOffsettingPartnerAward
           )
         } else {
           await assertVotesUnchanged(blockNumber)
-          await assertGoldTokenTotalSupplyUnchanged(blockNumber)
+          await assertRaceTokenTotalSupplyUnchanged(blockNumber)
           await assertLockedGoldBalanceUnchanged(blockNumber)
           await assertReserveBalanceUnchanged(blockNumber)
           await assertGovernanceBalanceChanged(blockNumber, await blockBaseGasFee(blockNumber))
@@ -1071,7 +1071,7 @@ describe('governance tests', () => {
 
     it('should not mint new Celo Gold', async () => {
       for (let blockNumber = blockFrozen; blockNumber < latestBlock; blockNumber++) {
-        await assertGoldTokenTotalSupplyUnchanged(blockNumber)
+        await assertRaceTokenTotalSupplyUnchanged(blockNumber)
       }
     })
   })
@@ -1091,7 +1091,7 @@ describe('governance tests', () => {
       const events = await registry.getPastEvents('RegistryUpdated', { fromBlock: 0 })
       let blockNumber = 0
       for (const e of events) {
-        if (e.returnValues.identifier === 'GoldToken') {
+        if (e.returnValues.identifier === 'RaceToken') {
           blockNumber = e.blockNumber
           break
         }

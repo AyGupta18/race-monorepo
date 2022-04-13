@@ -27,7 +27,7 @@ export async function getTokenAddresses() {
     return { goldTokenAddress, stableTokenAddress }
   } else {
     const kit = await getContractKit()
-    goldTokenAddress = await kit.registry.addressFor(CeloContract.GoldToken)
+    goldTokenAddress = await kit.registry.addressFor(CeloContract.RaceToken)
     stableTokenAddress = await kit.registry.addressFor(CeloContract.StableToken)
     return { goldTokenAddress, stableTokenAddress }
   }

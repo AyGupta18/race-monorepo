@@ -90,7 +90,7 @@ testWithGanache('Exchange Wrapper', (web3) => {
 
   test('SBAT sellGold', async () => {
     const usdAmount = await exchange.quoteGoldSell(ONE)
-    const goldToken = await kit.contracts.getGoldToken()
+    const goldToken = await kit.contracts.getRaceToken()
     const approveTx = await goldToken.approve(exchange.address, ONE).send()
     await approveTx.waitReceipt()
     const sellTx = await exchange.sellGold(ONE, usdAmount).send()
@@ -102,7 +102,7 @@ testWithGanache('Exchange Wrapper', (web3) => {
 
   test('SBAT buyDollar', async () => {
     const goldAmount = await exchange.quoteUsdBuy(ONE)
-    const goldToken = await kit.contracts.getGoldToken()
+    const goldToken = await kit.contracts.getRaceToken()
     const approveTx = await goldToken.approve(exchange.address, goldAmount.toString()).send()
     await approveTx.waitReceipt()
     const buyTx = await exchange.buyDollar(ONE, goldAmount).send()

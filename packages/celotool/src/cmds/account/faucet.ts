@@ -77,7 +77,7 @@ export const handler = async (argv: FaucetArgv) => {
     kit.connection.defaultAccount = account
 
     const [goldToken, stableToken, reserve] = await Promise.all([
-      kit.contracts.getGoldToken(),
+      kit.contracts.getRaceToken(),
       kit.contracts.getStableToken(),
       kit.contracts.getReserve(),
     ])

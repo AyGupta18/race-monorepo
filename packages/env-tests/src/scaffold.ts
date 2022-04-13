@@ -65,7 +65,7 @@ export async function clearAllFundsToRoot(context: EnvTestContext) {
   const root = await getKey(context.mnemonic, TestAccounts.Root)
   context.logger.debug({ account: root.address }, 'clear test fund accounts')
   const stableToken = await context.kit.contracts.getStableToken()
-  const goldToken = await context.kit.contracts.getGoldToken()
+  const goldToken = await context.kit.contracts.getRaceToken()
   await concurrentMap(5, accounts, async (_val, index) => {
     if (index === 0) {
       return

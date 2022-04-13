@@ -107,7 +107,7 @@ async function getFeeCurrencyContractAddress(
     case FeeCurrency.cUSD:
       return kit.registry.addressFor(CeloContract.StableToken)
     case FeeCurrency.cGLD:
-      return kit.registry.addressFor(CeloContract.GoldToken)
+      return kit.registry.addressFor(CeloContract.RaceToken)
     default:
       return kit.registry.addressFor(CeloContract.StableToken)
   }

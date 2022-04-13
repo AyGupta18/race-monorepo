@@ -96,7 +96,7 @@ export class ContractKit {
   }
 
   async getTotalBalance(address: string): Promise<AccountBalance> {
-    const celoToken = await this.contracts.getGoldToken()
+    const celoToken = await this.contracts.getRaceToken()
     const stableToken = await this.contracts.getStableToken()
     const lockedCelo = await this.contracts.getLockedGold()
     const goldBalance = await celoToken.balanceOf(address)
@@ -118,7 +118,7 @@ export class ContractKit {
   }
 
   async getNetworkConfig(): Promise<NetworkConfig> {
-    const token1 = await this.registry.addressFor(CeloContract.GoldToken)
+    const token1 = await this.registry.addressFor(CeloContract.RaceToken)
     const token2 = await this.registry.addressFor(CeloContract.StableToken)
     // There can only be `10` unique parametrized types in Promise.all call, that is how
     // its typescript typing is setup. Thus, since we crossed threshold of 10
@@ -169,7 +169,7 @@ export class ContractKit {
   }
 
   async getHumanReadableNetworkConfig() {
-    const token1 = await this.registry.addressFor(CeloContract.GoldToken)
+    const token1 = await this.registry.addressFor(CeloContract.RaceToken)
     const token2 = await this.registry.addressFor(CeloContract.StableToken)
     const promises: Array<Promise<any>> = [
       this.contracts.getExchange(),
@@ -218,11 +218,11 @@ export class ContractKit {
 
   /**
    * Set CeloToken to use to pay for gas fees
-   * @param token cUSD (StableToken) or CELO (GoldToken)
+   * @param token cUSD (StableToken) or CELO (RaceToken)
    */
   async setFeeCurrency(token: CeloToken): Promise<void> {
     const address =
-      token === CeloContract.GoldToken ? undefined : await this.registry.addressFor(token)
+      token === CeloContract.RaceToken ? undefined : await this.registry.addressFor(token)
     if (address) {
       await this.updateGasPriceInConnectionLayer(address)
     }

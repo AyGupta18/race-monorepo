@@ -29,7 +29,7 @@ export default class TransferCelo extends BaseCommand {
     const value = new BigNumber(res.flags.value)
 
     this.kit.defaultAccount = from
-    const celoToken = await this.kit.contracts.getGoldToken()
+    const celoToken = await this.kit.contracts.getRaceToken()
 
     await newCheckBuilder(this)
       .hasEnoughCelo(from, value)

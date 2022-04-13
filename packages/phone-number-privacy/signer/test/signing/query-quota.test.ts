@@ -33,7 +33,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(3, 3),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(5)
@@ -51,7 +51,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(0)
@@ -69,7 +69,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(3, 3),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(100)
@@ -87,7 +87,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(100)
@@ -105,7 +105,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(0)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(0)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(0)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(100)
@@ -123,7 +123,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(0)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(0)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(0)
@@ -141,7 +141,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(0)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(0)
@@ -159,7 +159,7 @@ describe(getRemainingQueryCount, () => {
       {
         [ContractRetrieval.getAttestations]: createMockAttestation(0, 0),
         [ContractRetrieval.getStableToken]: createMockToken(new BigNumber(200000000000000000)),
-        [ContractRetrieval.getGoldToken]: createMockToken(new BigNumber(200000000000000000)),
+        [ContractRetrieval.getRaceToken]: createMockToken(new BigNumber(200000000000000000)),
         [ContractRetrieval.getAccounts]: createMockAccounts('0x0'),
       },
       createMockWeb3(0)

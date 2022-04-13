@@ -86,7 +86,7 @@ export type ReportTarget = CeloToken | CurrencyPairIdentifier
  * @param target ReportTarget
  */
 const isCeloToken = (target: ReportTarget): target is CeloToken => {
-  return target === CeloContract.StableToken || target === CeloContract.GoldToken
+  return target === CeloContract.StableToken || target === CeloContract.RaceToken
 }
 
 /**

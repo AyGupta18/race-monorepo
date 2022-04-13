@@ -1,7 +1,7 @@
-# Module: "wrappers/GoldTokenWrapper"
+# Module: "wrappers/RaceTokenWrapper"
 
 ## Index
 
 ### Classes
 
-* [GoldTokenWrapper](../classes/_wrappers_goldtokenwrapper_.goldtokenwrapper.md)
+* [RaceTokenWrapper](../classes/_wrappers_goldtokenwrapper_.goldtokenwrapper.md)

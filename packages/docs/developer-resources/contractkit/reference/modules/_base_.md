@@ -20,7 +20,7 @@
 
 ###  CeloToken
 
-Ƭ **CeloToken**: *[GoldToken](../enums/_base_.celocontract.md#goldtoken) | [StableToken](../enums/_base_.celocontract.md#stabletoken)*
+Ƭ **CeloToken**: *[RaceToken](../enums/_base_.celocontract.md#goldtoken) | [StableToken](../enums/_base_.celocontract.md#stabletoken)*
 
 *Defined in [contractkit/src/base.ts:31](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/base.ts#L31)*
 

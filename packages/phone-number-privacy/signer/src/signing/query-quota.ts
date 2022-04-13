@@ -258,7 +258,7 @@ export async function getCeloBalance(logger: Logger, ...addresses: string[]): Pr
       .filter((address) => address !== NULL_ADDRESS)
       .map((address) =>
         retryAsyncWithBackOff(
-          async () => (await getContractKit().contracts.getGoldToken()).balanceOf(address),
+          async () => (await getContractKit().contracts.getRaceToken()).balanceOf(address),
           RETRY_COUNT,
           [],
           RETRY_DELAY_IN_MS

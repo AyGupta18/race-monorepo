@@ -70,7 +70,7 @@ Both implement the ERC20 standard, and to interact with them is as simple as:
 
 ```ts
 // get the CELO contract
-const celoToken = await kit.contracts.getGoldToken()
+const celoToken = await kit.contracts.getRaceToken()
 
 // get the cUSD contract
 const stableToken = await kit.contracts.getStableToken()
@@ -110,7 +110,7 @@ const receipt = await tx.waitReceipt()
 
 ### Interacting with Other Contracts
 
-Apart from GoldToken and StableToken, there are many core contracts.
+Apart from RaceToken and StableToken, there are many core contracts.
 
 For the moment, we have contract wrappers for:
 
@@ -118,7 +118,7 @@ For the moment, we have contract wrappers for:
 - Exchange (Uniswap kind exchange between Gold and Stable tokens)
 - Validators
 - LockedGold
-- GoldToken
+- RaceToken
 - StableToken
 - Attestations
 
@@ -145,7 +145,7 @@ The complete list of Celo Core contracts is:
 - Exchange
 - FeeCurrencyWhitelist
 - GasPriceMinimum
-- GoldToken
+- RaceToken
 - Governance
 - MultiSig
 - Random
@@ -163,7 +163,7 @@ That's actually how `kit` obtain them.
 We expose the registry api, which can be accessed by:
 
 ```ts
-const goldTokenAddress = await kit.registry.addressFor(CeloContract.GoldToken)
+const goldTokenAddress = await kit.registry.addressFor(CeloContract.RaceToken)
 ```
 
 ### Sending Custom Transactions
@@ -193,7 +193,7 @@ const receipt = await tx.waitReceipt()
 When interacting with a web3 contract object:
 
 ```ts
-const goldtoken = await kit._web3Contracts.getGoldToken()
+const goldtoken = await kit._web3Contracts.getRaceToken()
 const oneGold = kit.connection.web3.utils.toWei('1', 'ether')
 
 const txo = await goldtoken.methods.transfer(someAddress, oneGold)

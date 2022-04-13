@@ -3,12 +3,12 @@ pragma solidity ^0.5.13;
 import "openzeppelin-solidity/contracts/token/ERC20/IERC20.sol";
 import "openzeppelin-solidity/contracts/math/SafeMath.sol";
 import "contracts/governance/LockedGold.sol";
-import "./GoldTokenHarness.sol";
+import "./RaceTokenHarness.sol";
 
 contract LockedGoldHarness is LockedGold {
   using SafeMath for uint256;
 
-  GoldTokenHarness goldToken;
+  RaceTokenHarness goldToken;
 
   /* solhint-disable-next-line no-empty-blocks */
   function init_state() public {}
@@ -51,11 +51,11 @@ contract LockedGoldHarness is LockedGold {
     return length;
   }
 
-  function getGoldToken() internal view returns (IERC20) {
+  function getRaceToken() internal view returns (IERC20) {
     return IERC20(goldToken);
   }
 
-  function getGoldTokenExt() public view returns (address) {
+  function getRaceTokenExt() public view returns (address) {
     return address(goldToken);
   }
 }

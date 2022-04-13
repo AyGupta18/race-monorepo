@@ -3,7 +3,7 @@
 // referencing '@celo/utils/node_modules/bignumber.js'
 import { Address } from '@celo/base'
 import 'bignumber.js'
-import { GoldToken } from '../generated/GoldToken'
+import { RaceToken } from '../generated/RaceToken'
 import {
   BaseWrapper,
   proxyCall,
@@ -18,7 +18,7 @@ import {
 /**
  * ERC-20 contract for Celo native currency.
  */
-export class GoldTokenWrapper extends BaseWrapper<GoldToken> {
+export class RaceTokenWrapper extends BaseWrapper<RaceToken> {
   /**
    * Querying allowance.
    * @param from Account who has given the allowance.

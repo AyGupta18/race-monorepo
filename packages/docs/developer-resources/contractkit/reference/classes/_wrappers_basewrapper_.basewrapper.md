@@ -30,7 +30,7 @@ Base ContractWrapper
 
   ↳ [GasPriceMinimumWrapper](_wrappers_gaspriceminimum_.gaspriceminimumwrapper.md)
 
-  ↳ [GoldTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)
+  ↳ [RaceTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)
 
   ↳ [GovernanceWrapper](_wrappers_governance_.governancewrapper.md)
 

@@ -6,7 +6,7 @@ import { CeloContractName } from '@celo/protocol/lib/registry-utils'
 import { signTransaction } from '@celo/protocol/lib/signing-utils'
 import { privateKeyToAddress } from '@celo/utils/lib/address'
 import { BigNumber } from 'bignumber.js'
-import { EscrowInstance, GoldTokenInstance, MultiSigInstance, OwnableInstance, ProxyContract, ProxyInstance, RegistryInstance, StableTokenInstance } from 'types'
+import { EscrowInstance, RaceTokenInstance, MultiSigInstance, OwnableInstance, ProxyContract, ProxyInstance, RegistryInstance, StableTokenInstance } from 'types'
 import Web3 from 'web3'
 
 
@@ -49,7 +49,7 @@ export async function sendTransactionWithPrivateKey<T>(
 
 export async function convertFromContractDecimals(
   value: BigNumber | number,
-  contract: GoldTokenInstance | StableTokenInstance
+  contract: RaceTokenInstance | StableTokenInstance
 ) {
   const decimals = (await contract.decimals()).toNumber()
   const one = new BigNumber(10).pow(decimals)
@@ -82,7 +82,7 @@ export async function convertToContractDecimals(
 
 export async function getERC20TokenBalance(
   account: string,
-  contract: GoldTokenInstance | StableTokenInstance
+  contract: RaceTokenInstance | StableTokenInstance
 ) {
   return convertFromContractDecimals(await contract.balanceOf(account), contract)
 }
@@ -315,7 +315,7 @@ export async function transferOwnershipOfProxyAndImplementation<
 
 // TODO(asa): Share this code with mobile.
 export async function createInviteCode(
-  goldToken: GoldTokenInstance,
+  goldToken: RaceTokenInstance,
   stableToken: StableTokenInstance,
   invitationStableTokenAmount: BigNumber,
   gasPrice: number,

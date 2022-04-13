@@ -19,7 +19,7 @@ const StableToken = {
   transferWithComment: jest.fn(async () => ({ txo: txo() })),
 }
 
-const GoldToken = {
+const RaceToken = {
   balanceOf: jest.fn(async () => new BigNumber(1e18)),
   decimals: jest.fn(async () => '10'),
   transferWithComment: jest.fn(async () => ({ txo: txo() })),
@@ -51,7 +51,7 @@ const kit = {
   contracts: {
     getGasPriceMinimum: jest.fn(async () => GasPriceMinimum),
     getStableToken: jest.fn(async () => StableToken),
-    getGoldToken: jest.fn(async () => GoldToken),
+    getRaceToken: jest.fn(async () => RaceToken),
     getAttestations: jest.fn(async () => Attestations),
     getAccounts: jest.fn(async () => Accounts),
     getReserve: jest.fn(async () => Reserve),
@@ -77,7 +77,7 @@ export enum CeloContract {
   Exchange = 'Exchange',
   FeeCurrencyWhitelist = 'FeeCurrencyWhitelist',
   GasPriceMinimum = 'GasPriceMinimum',
-  GoldToken = 'GoldToken',
+  RaceToken = 'RaceToken',
   Governance = 'Governance',
   LockedGold = 'LockedGold',
   Random = 'Random',

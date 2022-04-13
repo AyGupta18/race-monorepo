@@ -64,14 +64,14 @@ At any point in the file you can `console.log()` variables to print their output
 ContractKit contains a `contracts` property that we can use to access certain information about deployed Celo contracts.
 
 {% hint style="info" %}
-The Celo blockchain has two native assets, CELO \(CELO\) and the Celo Dollar \(cUSD\). Both of these assets implement the [ERC20 token standard](https://eips.ethereum.org/EIPS/eip-20) from Ethereum. The CELO asset is managed by the CELO smart contract and Celo Dollars is managed by the cUSD contract. We can access the CELO contract via the SDK with `kit.contracts.getGoldToken()` and the cUSD contract with `kit.contracts.getStableToken()`. These functions return promises, so we have to wait for them to resolve before we can interact with the token contracts. If you are unfamiliar with Promises in Javascript, [check out this documentation.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) Promises are a common tool in blockchain development. In this guide, we use the [async/await syntax for promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
+The Celo blockchain has two native assets, CELO \(CELO\) and the Celo Dollar \(cUSD\). Both of these assets implement the [ERC20 token standard](https://eips.ethereum.org/EIPS/eip-20) from Ethereum. The CELO asset is managed by the CELO smart contract and Celo Dollars is managed by the cUSD contract. We can access the CELO contract via the SDK with `kit.contracts.getRaceToken()` and the cUSD contract with `kit.contracts.getStableToken()`. These functions return promises, so we have to wait for them to resolve before we can interact with the token contracts. If you are unfamiliar with Promises in Javascript, [check out this documentation.](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) Promises are a common tool in blockchain development. In this guide, we use the [async/await syntax for promises](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await).
 {% endhint %}
 
 Let's read some token balances from the blockchain. Add the following line in the `readAccount()` function. 
 
 ```javascript
 // 3. Get the token contract wrappers
-let goldtoken = await kit.contracts.getGoldToken()
+let goldtoken = await kit.contracts.getRaceToken()
 let stabletoken = await kit.contracts.getStableToken()
 ```
 
@@ -141,7 +141,7 @@ async function createAccount(){
     let account = await getAccount()
     
     // 8. Get the token contract wrappers
-    let goldtoken = await kit.contracts.getGoldToken()
+    let goldtoken = await kit.contracts.getRaceToken()
     let stabletoken = await kit.contracts.getStableToken()
     
     // 9. Get your token balances
@@ -196,7 +196,7 @@ async function send(){
     let amount = 100000
 
     // 14. Get the token contract wrappers    
-    let goldtoken = await kit.contracts.getGoldToken()
+    let goldtoken = await kit.contracts.getRaceToken()
     let stabletoken = await kit.contracts.getStableToken()
     
     // 15. Transfer CELO and cUSD from your account to anAddress
@@ -277,7 +277,7 @@ Once you have successfully created the ContractKit, you can use the various Celo
 ```javascript
 // Use the gold token contract to transfer tokens
 const transfer = async (from, to, amount) => {
-  const goldTokenContract = await kit.contracts.getGoldToken();
+  const goldTokenContract = await kit.contracts.getRaceToken();
   const tx = await goldTokenContract.transfer(to, amount).send({ from });
   const receipt = await tx.waitReceipt();
   console.log("Transaction Receipt: ", receipt);

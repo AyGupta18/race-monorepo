@@ -300,7 +300,7 @@ class CheckBuilder {
     const valueInEth = this.kit.connection.web3.utils.fromWei(value.toFixed(), 'ether')
     return this.addCheck(`Account has at least ${valueInEth} CELO`, () =>
       this.kit.contracts
-        .getGoldToken()
+        .getRaceToken()
         .then((goldToken) => goldToken.balanceOf(account))
         .then((balance) => balance.gte(value))
     )

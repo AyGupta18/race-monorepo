@@ -51,7 +51,7 @@ export default class ExchangeCelo extends BaseCommand {
       }
     }
 
-    const celoToken = await this.kit.contracts.getGoldToken()
+    const celoToken = await this.kit.contracts.getRaceToken()
     const exchange = await this.kit.contracts.getExchange()
 
     await displaySendTx(

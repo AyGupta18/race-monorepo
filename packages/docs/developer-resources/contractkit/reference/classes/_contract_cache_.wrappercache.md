@@ -31,7 +31,7 @@ Provides access to all contract wrappers for celo core contracts
 * [getExchange](_contract_cache_.wrappercache.md#getexchange)
 * [getFreezer](_contract_cache_.wrappercache.md#getfreezer)
 * [getGasPriceMinimum](_contract_cache_.wrappercache.md#getgaspriceminimum)
-* [getGoldToken](_contract_cache_.wrappercache.md#getgoldtoken)
+* [getRaceToken](_contract_cache_.wrappercache.md#getgoldtoken)
 * [getGovernance](_contract_cache_.wrappercache.md#getgovernance)
 * [getLockedGold](_contract_cache_.wrappercache.md#getlockedgold)
 * [getMetaTransactionWallet](_contract_cache_.wrappercache.md#getmetatransactionwallet)
@@ -191,13 +191,13 @@ ___
 
 ___
 
-###  getGoldToken
+###  getRaceToken
 
-▸ **getGoldToken**(): *Promise‹[GoldTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)‹››*
+▸ **getRaceToken**(): *Promise‹[RaceTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)‹››*
 
 *Defined in [contractkit/src/contract-cache.ts:129](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/contract-cache.ts#L129)*
 
-**Returns:** *Promise‹[GoldTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)‹››*
+**Returns:** *Promise‹[RaceTokenWrapper](_wrappers_goldtokenwrapper_.goldtokenwrapper.md)‹››*
 
 ___
 

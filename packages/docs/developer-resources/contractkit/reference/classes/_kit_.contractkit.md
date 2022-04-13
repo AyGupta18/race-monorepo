@@ -410,7 +410,7 @@ Set CeloToken to use to pay for gas fees
 
 Name | Type | Description |
 ------ | ------ | ------ |
-`token` | [CeloToken](../modules/_base_.md#celotoken) | cUSD (StableToken) or CELO (GoldToken)  |
+`token` | [CeloToken](../modules/_base_.md#celotoken) | cUSD (StableToken) or CELO (RaceToken)  |
 
 **Returns:** *Promise‹void›*
 

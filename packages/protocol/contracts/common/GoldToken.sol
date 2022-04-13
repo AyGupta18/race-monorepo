@@ -9,7 +9,7 @@ import "./Initializable.sol";
 import "./interfaces/ICeloToken.sol";
 import "../common/interfaces/ICeloVersionedContract.sol";
 
-contract GoldToken is
+contract RaceToken is
   Initializable,
   CalledByVm,
   Freezable,
@@ -22,8 +22,8 @@ contract GoldToken is
   // Address of the TRANSFER precompiled contract.
   // solhint-disable state-visibility
   address constant TRANSFER = address(0xff - 2);
-  string constant NAME = "Celo Gold";
-  string constant SYMBOL = "cGLD";
+  string constant NAME = "Race";
+  string constant SYMBOL = "RACE";
   uint8 constant DECIMALS = 18;
   uint256 internal totalSupply_;
   // solhint-enable state-visibility

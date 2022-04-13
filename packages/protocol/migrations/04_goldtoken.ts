@@ -5,18 +5,18 @@ import {
   getDeployedProxiedContract,
 } from '@celo/protocol/lib/web3-utils'
 import { config } from '@celo/protocol/migrationsConfig'
-import { FreezerInstance, GoldTokenInstance } from 'types'
+import { FreezerInstance, RaceTokenInstance } from 'types'
 
 const initializeArgs = async () => {
   return [config.registry.predeployedProxyAddress]
 }
 
-module.exports = deploymentForCoreContract<GoldTokenInstance>(
+module.exports = deploymentForCoreContract<RaceTokenInstance>(
   web3,
   artifacts,
-  CeloContractName.GoldToken,
+  CeloContractName.RaceToken,
   initializeArgs,
-  async (goldToken: GoldTokenInstance) => {
+  async (goldToken: RaceTokenInstance) => {
     if (config.goldToken.frozen) {
       const freezer: FreezerInstance = await getDeployedProxiedContract<FreezerInstance>(
         'Freezer',

@@ -67,7 +67,7 @@ const receipt = await tx.waitReceipt()
 When interacting with a web3 contract object:
 
 ```ts
-const goldtoken = await kit._web3Contracts.getGoldToken()
+const goldtoken = await kit._web3Contracts.getRaceToken()
 const oneGold = kit.web3.utils.toWei('1', 'ether')
 
 const txo = await goldtoken.methods.transfer(someAddress, oneGold)
@@ -100,7 +100,7 @@ const exchange = await kit.contracts.getExchange()
 const amountOfcUsd = await exchange.quoteGoldSell(oneGold)
 
 if (amountOfcUsd > favorableAmount) {
-  const goldToken = await kit.contracts.getGoldToken()
+  const goldToken = await kit.contracts.getRaceToken()
   const approveTx = await goldToken.approve(exchange.address, amountToExchange).send()
   const approveReceipt = await approveTx.waitReceipt()
 

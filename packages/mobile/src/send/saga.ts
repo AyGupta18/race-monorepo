@@ -6,7 +6,7 @@ import { SendEvents } from 'src/analytics/Events'
 import ValoraAnalytics from 'src/analytics/ValoraAnalytics'
 import { ErrorMessages } from 'src/app/ErrorMessages'
 import { calculateFee } from 'src/fees/saga'
-import { transferGoldToken } from 'src/goldToken/actions'
+import { transferRaceToken } from 'src/goldToken/actions'
 import { encryptComment } from 'src/identity/commentEncryption'
 import { addressToE164NumberSelector, e164NumberToAddressSelector } from 'src/identity/reducer'
 import { InviteBy } from 'src/invite/actions'
@@ -148,7 +148,7 @@ function* sendPayment(
     switch (currency) {
       case CURRENCY_ENUM.GOLD: {
         yield put(
-          transferGoldToken({
+          transferRaceToken({
             recipientAddress,
             amount: amount.toString(),
             comment: encryptedComment,

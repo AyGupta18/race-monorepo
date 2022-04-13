@@ -13,8 +13,8 @@ import {
   ExchangeInstance,
   FreezerContract,
   FreezerInstance,
-  GoldTokenContract,
-  GoldTokenInstance,
+  RaceTokenContract,
+  RaceTokenInstance,
   MockReserveContract,
   MockReserveInstance,
   MockSortedOraclesContract,
@@ -27,7 +27,7 @@ import {
 
 const Exchange: ExchangeContract = artifacts.require('Exchange')
 const Freezer: FreezerContract = artifacts.require('Freezer')
-const GoldToken: GoldTokenContract = artifacts.require('GoldToken')
+const RaceToken: RaceTokenContract = artifacts.require('RaceToken')
 const MockSortedOracles: MockSortedOraclesContract = artifacts.require('MockSortedOracles')
 const MockReserve: MockReserveContract = artifacts.require('MockReserve')
 const Registry: RegistryContract = artifacts.require('Registry')
@@ -41,14 +41,14 @@ Exchange.numberFormat = 'BigNumber'
 // @ts-ignore
 MockReserve.numberFormat = 'BigNumber'
 // @ts-ignore
-GoldToken.numberFormat = 'BigNumber'
+RaceToken.numberFormat = 'BigNumber'
 
 contract('Exchange', (accounts: string[]) => {
   let exchange: ExchangeInstance
   let freezer: FreezerInstance
   let registry: RegistryInstance
   let stableToken: StableTokenInstance
-  let goldToken: GoldTokenInstance
+  let goldToken: RaceTokenInstance
   let mockSortedOracles: MockSortedOraclesInstance
   let mockReserve: MockReserveInstance
 
@@ -106,14 +106,14 @@ contract('Exchange', (accounts: string[]) => {
 
   beforeEach(async () => {
     freezer = await Freezer.new()
-    goldToken = await GoldToken.new()
+    goldToken = await RaceToken.new()
     mockReserve = await MockReserve.new()
     stableToken = await StableToken.new()
     registry = await Registry.new()
     await registry.setAddressFor(CeloContractName.Freezer, freezer.address)
-    await registry.setAddressFor(CeloContractName.GoldToken, goldToken.address)
+    await registry.setAddressFor(CeloContractName.RaceToken, goldToken.address)
     await registry.setAddressFor(CeloContractName.Reserve, mockReserve.address)
-    await mockReserve.setGoldToken(goldToken.address)
+    await mockReserve.setRaceToken(goldToken.address)
 
     await goldToken.initialize(registry.address)
     // TODO: use MockStableToken for this

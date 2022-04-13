@@ -51,7 +51,7 @@ oracle:
       # dataFetchFrequency
       # minimumTrades
       # scalingRate
-  baseCurrency: GoldToken
+  baseCurrency: RaceToken
   quoteCurrency: USD
   token: StableToken
   metrics:

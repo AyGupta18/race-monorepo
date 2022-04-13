@@ -18,7 +18,7 @@ export function runReserveTest(context: EnvTestContext) {
       context.kit.connection.addAccount(spender.privateKey)
       context.kit.connection.addAccount(custodian.privateKey)
       const reserve = await context.kit.contracts.getReserve()
-      const goldToken = await context.kit.contracts.getGoldToken()
+      const goldToken = await context.kit.contracts.getRaceToken()
 
       // Find an alternate way to get the reserve spender address
       let spenderMultiSigAddress = context.reserveSpenderMultiSigAddress

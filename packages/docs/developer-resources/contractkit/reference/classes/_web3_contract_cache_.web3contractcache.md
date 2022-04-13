@@ -36,7 +36,7 @@ a contract wrapper
 * [getFeeCurrencyWhitelist](_web3_contract_cache_.web3contractcache.md#getfeecurrencywhitelist)
 * [getFreezer](_web3_contract_cache_.web3contractcache.md#getfreezer)
 * [getGasPriceMinimum](_web3_contract_cache_.web3contractcache.md#getgaspriceminimum)
-* [getGoldToken](_web3_contract_cache_.web3contractcache.md#getgoldtoken)
+* [getRaceToken](_web3_contract_cache_.web3contractcache.md#getgoldtoken)
 * [getGovernance](_web3_contract_cache_.web3contractcache.md#getgovernance)
 * [getLockedGold](_web3_contract_cache_.web3contractcache.md#getlockedgold)
 * [getMetaTransactionWallet](_web3_contract_cache_.web3contractcache.md#getmetatransactionwallet)
@@ -219,13 +219,13 @@ ___
 
 ___
 
-###  getGoldToken
+###  getRaceToken
 
-▸ **getGoldToken**(): *Promise‹GoldToken‹››*
+▸ **getRaceToken**(): *Promise‹RaceToken‹››*
 
 *Defined in [contractkit/src/web3-contract-cache.ts:112](https://github.com/celo-org/celo-monorepo/blob/master/packages/sdk/contractkit/src/web3-contract-cache.ts#L112)*
 
-**Returns:** *Promise‹GoldToken‹››*
+**Returns:** *Promise‹RaceToken‹››*
 
 ___
 

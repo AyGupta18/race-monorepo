@@ -1,6 +1,6 @@
 import { CeloTransactionObject } from '@celo/connect'
 import { ExchangeWrapper } from '@celo/contractkit/lib/wrappers/Exchange'
-import { GoldTokenWrapper } from '@celo/contractkit/lib/wrappers/GoldTokenWrapper'
+import { RaceTokenWrapper } from '@celo/contractkit/lib/wrappers/RaceTokenWrapper'
 import { ReserveWrapper } from '@celo/contractkit/lib/wrappers/Reserve'
 import { StableTokenWrapper } from '@celo/contractkit/lib/wrappers/StableTokenWrapper'
 import { CELO_AMOUNT_FOR_ESTIMATE, DOLLAR_AMOUNT_FOR_ESTIMATE } from '@celo/utils/src/celoHistory'
@@ -193,9 +193,9 @@ export function* exchangeGoldAndStableTokens(action: ExchangeTokensAction) {
 
     const contractKit = yield call(getContractKit)
 
-    const goldTokenContract: GoldTokenWrapper = yield call([
+    const goldTokenContract: RaceTokenWrapper = yield call([
       contractKit.contracts,
-      contractKit.contracts.getGoldToken,
+      contractKit.contracts.getRaceToken,
     ])
     const stableTokenContract: StableTokenWrapper = yield call([
       contractKit.contracts,
