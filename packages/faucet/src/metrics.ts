@@ -1,23 +1,4 @@
-import { Logging } from '@google-cloud/logging'
-
-// See https://firebase.google.com/docs/functions/config-env
-const ProjectID = process.env.GCLOUD_PROJECT || 'celo-faucet'
-
-const logging = new Logging({
-  projectId: ProjectID,
-})
-const log = logging.log('faucetMetrics')
-
-const METADATA = {
-  resource: {
-    labels: {
-      function_name: 'faucetMetrics',
-      project_id: ProjectID,
-      region: 'us-central1',
-    },
-    type: 'cloud_function',
-  },
-}
+const { log } = require('firebase-functions/lib/logger')
 
 export enum ExecutionResult {
   Ok = 'Ok',
@@ -30,23 +11,11 @@ export enum ExecutionResult {
   OtherErr = 'OtherErr',
 }
 
-/**
- * Sends an entry but doesn't block
- * (we don't want to block waiting for a metric to be sent)
- */
-function noBlockingSendEntry(entryData: Record<string, any>) {
-  const entry = log.entry(METADATA, entryData)
-  log.write(entry).catch((err: any) => {
-    console.error('EventLogger: error sending entry', err)
-  })
-}
-
 export function logExecutionResult(snapKey: string, result: ExecutionResult) {
-  noBlockingSendEntry({
+  log(`${snapKey}: Faucet result was ${result}`, {
     event: 'celo/faucet/result',
     executionResult: result,
     failed: result !== ExecutionResult.Ok,
     snapKey,
-    message: `${snapKey}: Faucet result was ${result}`,
   })
 }

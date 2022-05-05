@@ -1,16 +1,8 @@
 {
   "faucet": {
     "testnet": {
-      "faucet_gold_amount": "5000000000000000000",
+      "faucet_gold_amount": "1000000000000000000",
       "node_url": "http://127.0.0.1:8547",
-      "faucet_stable_amount": "10000000000000000000"
-    },
-    "tesnet": {
-      "faucet_stable_amount": "10000000000000000000",
-      "faucet_gold_amount": "5000000000000000000"
-    },
-    "alfajores": {
-      "faucet_gold_amount": "5000000000000000000",
       "faucet_stable_amount": "10000000000000000000"
     }
   }
